@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home | FYP-26-S2-27</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.hero {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--border2);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 .hi { color: var(--accent); }
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text2);
+  max-width: 540px;
+  line-height: 1.85;
+  margin-bottom: 3rem;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #080c10;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 2px;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-meta {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.meta-item { display: flex; flex-direction: column; gap: 3px; }
+.meta-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+.meta-value { font-size: 14px; color: var(--text); }
+
+/* STATS BAND */
+.stats-band {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-cell {
+  background: var(--surface);
+  padding: 1.5rem 1.25rem;
+}
+
+.stat-num {
+  font-family: var(--mono);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.stat-lbl { font-size: 12px; color: var(--text3); line-height: 1.4; }
+
+/* OVERVIEW CARDS */
+.overview { margin-top: 5rem; }
+.overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+@media (max-width: 768px) {
+  .hero { min-height: auto; padding-top: 1rem; }
+  .stats-band { grid-template-columns: 1fr 1fr; }
+  .overview-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">FYP-26-S2-27</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="demo.html">Demo</a></li>
+    <li><a href="documentation.html">Docs</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <div class="hero-tag">Final Year Project · SIM · 2026</div>
+    <h1>AI-Powered<br /><span class="hi">Stock Price</span><br />Prediction</h1>
+    <p class="hero-sub">
+      Combining Bidirectional LSTM deep learning with FinBERT financial sentiment analysis to forecast next-day stock movement across ten large-cap technology equities.
+    </p>
+    <div class="hero-cta">
+      <a href="about.html" class="btn-primary">Learn More →</a>
+      <a href="demo.html" class="btn-outline">View Demo</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Project ID</span>
+        <span class="meta-value">FYP-26-S2-27</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Institution</span>
+        <span class="meta-value">Singapore Institute of Management</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Domain</span>
+        <span class="meta-value">ML · NLP · FinTech</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Year</span>
+        <span class="meta-value">2025 / 2026</span>
+      </div>
+    </div>
+
+    <div class="stats-band">
+      <div class="stat-cell">
+        <div class="stat-num">10</div>
+        <div class="stat-lbl">Large-cap tech stocks</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">8,444</div>
+        <div class="stat-lbl">News articles scored</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">12,540</div>
+        <div class="stat-lbl">Trading days in dataset</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">5+</div>
+        <div class="stat-lbl">Data sources integrated</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item">AAPL <span>Apple</span></span>
+      <span class="ticker-item">MSFT <span>Microsoft</span></span>
+      <span class="ticker-item">GOOGL <span>Alphabet</span></span>
+      <span class="ticker-item">AMZN <span>Amazon</span></span>
+      <span class="ticker-item">NVDA <span>NVIDIA</span></span>
+      <span class="ticker-item">META <span>Meta</span></span>
+      <span class="ticker-item">TSLA <span>Tesla</span></span>
+      <span class="ticker-item">AVGO <span>Broadcom</span></span>
+      <span class="ticker-item">ORCL <span>Oracle</span></span>
+      <span class="ticker-item">AMD <span>AMD</span></span>
+      <span class="ticker-item">AAPL <span>Apple</span></span>
+      <span class="ticker-item">MSFT <span>Microsoft</span></span>
+      <span class="ticker-item">GOOGL <span>Alphabet</span></span>
+      <span class="ticker-item">AMZN <span>Amazon</span></span>
+      <span class="ticker-item">NVDA <span>NVIDIA</span></span>
+      <span class="ticker-item">META <span>Meta</span></span>
+      <span class="ticker-item">TSLA <span>Tesla</span></span>
+      <span class="ticker-item">AVGO <span>Broadcom</span></span>
+      <span class="ticker-item">ORCL <span>Oracle</span></span>
+      <span class="ticker-item">AMD <span>AMD</span></span>
+    </div>
+  </div>
+
+  <div class="overview">
+    <div class="sec-label">Overview</div>
+    <h2 class="sec-title">What we built</h2>
+    <p class="sec-desc">An end-to-end prediction system bridging financial data engineering, deep learning, and a live web interface — making AI stock forecasting accessible and transparent.</p>
+    <div class="overview-grid">
+      <div class="card fade-up">
+        <div class="card-label">Problem</div>
+        <p style="font-size:14px;color:var(--text2);">Traditional price models ignore news. Financial sentiment carries real signal — earnings surprises, regulatory changes, and market narratives all move stocks in ways that historical prices alone cannot predict.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-label">Solution</div>
+        <p style="font-size:14px;color:var(--text2);">A hybrid BiLSTM + FinBERT pipeline that fuses OHLCV technical features with daily sentiment scores to produce next-day UP / DOWN directional forecasts per stock.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-label">Data</div>
+        <p style="font-size:14px;color:var(--text2);">Over 8,400 financial news articles and 12,500 trading days across AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA, AVGO, ORCL, and AMD — sourced from five APIs.</p>
+      </div>
+      <div class="card fade-up">
+        <div class="card-label">Outcome</div>
+        <p style="font-size:14px;color:var(--text2);">A fully deployed web application with live prediction, a real-time sentiment gauge, and a reproducible Colab training pipeline — demonstrating research rigour in a real financial domain.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>FYP-26-S2-27 · Singapore Institute of Management · 2026</span>
+  <span>BiLSTM + FinBERT · PyTorch · FastAPI · React</span>
+</footer>
+</body>
+</html>

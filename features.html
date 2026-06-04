@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Features | FYP-26-S2-27</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.feature-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.feature-block:first-of-type { border-top: 1px solid var(--border); margin-top: 1rem; }
+.feature-block:last-of-type { border-bottom: none; }
+.feature-block.reverse { direction: rtl; }
+.feature-block.reverse > * { direction: ltr; }
+
+.feat-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.feat-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.feat-desc {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.feat-visual {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.9;
+  min-height: 160px;
+}
+
+.feat-visual .hl { color: var(--accent); }
+.feat-visual .hl2 { color: var(--blue); }
+.feat-visual .hl3 { color: var(--amber); }
+.feat-visual .hl4 { color: var(--red); }
+.feat-visual .comment { color: var(--text3); }
+
+.mini-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.mini-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.mini-card-num {
+  font-family: var(--mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.mini-card-lbl { font-size: 12px; color: var(--text3); }
+
+@media (max-width: 768px) {
+  .feature-block, .feature-block.reverse { grid-template-columns: 1fr; direction: ltr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">FYP-26-S2-27</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="features.html" class="active">Features</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="demo.html">Demo</a></li>
+    <li><a href="documentation.html">Docs</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <div class="page-eyebrow">System Features</div>
+    <h1 class="page-title">What the system does</h1>
+    <p class="page-subtitle">Key capabilities across the data pipeline, machine learning models, and web application interface.</p>
+  </div>
+
+  <!-- Feature 1 -->
+  <div class="feature-block">
+    <div>
+      <div class="feat-num">01 / Data Pipeline</div>
+      <h2 class="feat-title">Multi-source financial data collection</h2>
+      <p class="feat-desc">Automated scripts pull historical OHLCV price data and news headlines from five public APIs, deduplicate and clean the records, then store them in a unified format ready for feature engineering.</p>
+      <div class="tag-row">
+        <span class="tag">yfinance</span><span class="tag">Finnhub</span><span class="tag">Alpha Vantage</span><span class="tag">NewsAPI</span><span class="tag">GDELT</span>
+      </div>
+    </div>
+    <div class="feat-visual">
+      <span class="comment"># Data collected per stock</span><br/>
+      tickers = [<span class="hl">'AAPL'</span>, <span class="hl">'MSFT'</span>, <span class="hl">'GOOGL'</span>,<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'AMZN'</span>, <span class="hl">'NVDA'</span>, <span class="hl">'META'</span>,<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'TSLA'</span>, <span class="hl">'AVGO'</span>, <span class="hl">'ORCL'</span>,<br/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'AMD'</span>]<br/><br/>
+      trading_days = <span class="hl2">12,540</span><br/>
+      news_articles = <span class="hl2">8,444</span><br/>
+      date_range = <span class="hl3">'2020–2024'</span>
+    </div>
+  </div>
+
+  <!-- Feature 2 -->
+  <div class="feature-block reverse">
+    <div>
+      <div class="feat-num">02 / NLP</div>
+      <h2 class="feat-title">FinBERT sentiment scoring</h2>
+      <p class="feat-desc">Every financial news headline is passed through a FinBERT transformer model — a BERT variant fine-tuned on financial text — to produce Positive, Negative, or Neutral sentiment labels with confidence scores. Scores are aggregated daily per stock.</p>
+      <div class="mini-cards">
+        <div class="mini-card">
+          <div class="mini-card-num" style="color:var(--accent)">2,565</div>
+          <div class="mini-card-lbl">Positive articles</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-num" style="color:var(--red)">3,662</div>
+          <div class="mini-card-lbl">Negative articles</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-num" style="color:var(--amber)">1,808</div>
+          <div class="mini-card-lbl">Neutral articles</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-num">8,444</div>
+          <div class="mini-card-lbl">Total scored</div>
+        </div>
+      </div>
+    </div>
+    <div class="feat-visual">
+      <span class="comment"># FinBERT output example</span><br/>
+      {<br/>
+      &nbsp;&nbsp;<span class="hl2">"headline"</span>: <span class="hl">"NVDA beats Q3 earnings..."</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"label"</span>: <span class="hl">"positive"</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"score"</span>: <span class="hl3">0.9412</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"ticker"</span>: <span class="hl">"NVDA"</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"date"</span>: <span class="hl">"2024-11-20"</span><br/>
+      }
+    </div>
+  </div>
+
+  <!-- Feature 3 -->
+  <div class="feature-block">
+    <div>
+      <div class="feat-num">03 / Deep Learning</div>
+      <h2 class="feat-title">Bidirectional LSTM prediction model</h2>
+      <p class="feat-desc">A BiLSTM neural network processes rolling windows of combined price and sentiment features. The bidirectional architecture captures both past and contextual temporal patterns, outputting a probability for the next-day UP / DOWN direction.</p>
+      <div class="tag-row">
+        <span class="tag">PyTorch</span><span class="tag">BiLSTM</span><span class="tag">Sliding window</span><span class="tag">Chronological split</span>
+      </div>
+    </div>
+    <div class="feat-visual">
+      <span class="comment"># Input features per timestep</span><br/>
+      features = [<br/>
+      &nbsp;&nbsp;<span class="hl2">'open'</span>, <span class="hl2">'high'</span>, <span class="hl2">'low'</span>, <span class="hl2">'close'</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">'volume'</span>, <span class="hl2">'rsi'</span>, <span class="hl2">'macd'</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">'bb_upper'</span>, <span class="hl2">'bb_lower'</span>,<br/>
+      &nbsp;&nbsp;<span class="hl">'sentiment_score'</span><span class="comment">  # FinBERT</span><br/>
+      ]<br/><br/>
+      output → <span class="hl">'UP'</span> | <span class="hl4">'DOWN'</span>
+    </div>
+  </div>
+
+  <!-- Feature 4 -->
+  <div class="feature-block reverse">
+    <div>
+      <div class="feat-num">04 / Web Application</div>
+      <h2 class="feat-title">Live prediction interface</h2>
+      <p class="feat-desc">A React frontend backed by a FastAPI Python server. Users select a stock from a dropdown, the system auto-triggers a BiLSTM inference call, and returns the directional prediction alongside the FinBERT sentiment gauge — making the model's inputs visible to the user.</p>
+      <div class="tag-row">
+        <span class="tag">React + Vite</span><span class="tag">Tailwind CSS</span><span class="tag">FastAPI</span><span class="tag">OCI Cloud</span>
+      </div>
+    </div>
+    <div class="feat-visual">
+      <span class="comment"># API response structure</span><br/>
+      {<br/>
+      &nbsp;&nbsp;<span class="hl2">"ticker"</span>: <span class="hl">"AAPL"</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"prediction"</span>: <span class="hl">"UP"</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"confidence"</span>: <span class="hl3">0.73</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"sentiment"</span>: <span class="hl3">0.61</span>,<br/>
+      &nbsp;&nbsp;<span class="hl2">"sentiment_label"</span>: <span class="hl">"positive"</span><br/>
+      }
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>FYP-26-S2-27 · Singapore Institute of Management · 2026</span>
+  <span>BiLSTM + FinBERT · PyTorch · FastAPI · React</span>
+</footer>
+</body>
+</html>

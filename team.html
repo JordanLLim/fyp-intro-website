@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Team | FYP-26-S2-27</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.team-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.team-card:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+}
+
+.team-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  border: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.team-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.team-role {
+  font-size: 13px;
+  color: var(--accent);
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+
+.team-desc {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.team-contrib {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.team-contrib-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.contrib-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contrib-item {
+  font-size: 13px;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contrib-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.sup-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.sup-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  max-width: 480px;
+}
+
+.sup-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(96,165,250,0.08);
+  border: 1px solid rgba(96,165,250,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.sup-name { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+.sup-role { font-size: 13px; color: var(--text3); }
+
+@media (max-width: 768px) {
+  .team-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">FYP-26-S2-27</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="team.html" class="active">Team</a></li>
+    <li><a href="demo.html">Demo</a></li>
+    <li><a href="documentation.html">Docs</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <div class="page-eyebrow">The Team</div>
+    <h1 class="page-title">Meet the developers</h1>
+    <p class="page-subtitle">Developed by a two-person team at the Singapore Institute of Management, combining expertise in machine learning, full-stack development, and cloud infrastructure.</p>
+  </div>
+
+  <div class="team-grid">
+    <!-- Member 1 - Jordan -->
+    <div class="team-card">
+      <div class="team-avatar">J</div>
+      <div class="team-name">Jordan</div>
+      <div class="team-role">ML Engineer · Full-Stack · Cloud</div>
+      <p class="team-desc">
+        Computing student at SIM with a focus on AI/ML systems and cloud infrastructure. Responsible for the end-to-end pipeline from data collection through model training and web deployment, with a career direction in cybersecurity and cloud computing.
+      </p>
+      <div class="team-contrib">
+        <div class="team-contrib-label">Contributions</div>
+        <div class="contrib-list">
+          <div class="contrib-item"><div class="contrib-dot"></div>BiLSTM model design &amp; training (PyTorch)</div>
+          <div class="contrib-item"><div class="contrib-dot"></div>FinBERT sentiment scoring pipeline</div>
+          <div class="contrib-item"><div class="contrib-dot"></div>React + Vite frontend development</div>
+          <div class="contrib-item"><div class="contrib-dot"></div>FastAPI backend &amp; REST API</div>
+          <div class="contrib-item"><div class="contrib-dot"></div>OCI Cloud deployment &amp; infrastructure</div>
+          <div class="contrib-item"><div class="contrib-dot"></div>Data collection scripts (5 APIs)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 2 - Classmate placeholder -->
+    <div class="team-card">
+      <div class="team-avatar">?</div>
+      <div class="team-name">Classmate Name</div>
+      <div class="team-role">Role · Contributions</div>
+      <p class="team-desc">
+        <!-- Update with your classmate's description -->
+        Computing student at SIM. Co-developer of the FYP-26-S2-27 project, contributing to the research design, data analysis, and system development.
+      </p>
+      <div class="team-contrib">
+        <div class="team-contrib-label">Contributions</div>
+        <div class="contrib-list">
+          <div class="contrib-item"><div class="contrib-dot"></div><!-- Add contributions --></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supervisor -->
+  <div class="sup-section">
+    <div class="sec-label">Supervisor</div>
+    <h2 class="sec-title" style="margin-bottom:1.25rem">Project supervisor</h2>
+    <div class="sup-card">
+      <div class="sup-avatar">S</div>
+      <div>
+        <div class="sup-name">Supervisor Name</div>
+        <div class="sup-role">Singapore Institute of Management</div>
+      </div>
+    </div>
+    <p style="margin-top:1rem;font-size:13px;color:var(--text3);font-family:var(--mono)">// Update supervisor name above</p>
+  </div>
+</div>
+
+<footer>
+  <span>FYP-26-S2-27 · UOW · 2026</span>
+  <span>XGBoost + FinBERT · PyTorch · FastAPI · React</span>
+</footer>
+</body>
+</html>
