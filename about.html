@@ -75,7 +75,7 @@
 <div class="page">
   <div class="page-header reveal">
     <div class="page-eyebrow">About the Project</div>
-    <h1 class="page-title">AI Stock Price Prediction<br />Using BiLSTM + FinBERT</h1>
+    <h1 class="page-title">AI Stock Price Prediction<br />Using XGBoost + FinBERT</h1>
     <p class="page-subtitle">A hybrid deep learning and NLP approach to forecasting next-day stock movement across large-cap technology equities listed on NASDAQ.</p>
   </div>
 
@@ -89,14 +89,14 @@
     </div>
     <div class="ps-card reveal delay-2">
       <div class="ps-label">Our Approach</div>
-      <p>We designed a hybrid pipeline that fuses two complementary signals: <strong style="color:var(--text)">BiLSTM</strong> for learning temporal price patterns, and <strong style="color:var(--text)">FinBERT</strong> for extracting daily sentiment from financial news.</p>
+      <p>We designed a hybrid pipeline that fuses two complementary signals: <strong style="color:var(--text)">XGBoost</strong> for learning temporal price patterns, and <strong style="color:var(--text)">FinBERT</strong> for extracting daily sentiment from financial news.</p>
       <p>The combined feature vector is used to predict whether each stock will close UP or DOWN on the next trading day — a binary directional classification task.</p>
     </div>
   </div>
 
   <div class="sec-label reveal" style="margin-top:3.5rem">Scope</div>
   <h2 class="sec-title reveal delay-1">What the system covers</h2>
-  <p class="sec-desc reveal delay-2">Ten large-cap technology stocks listed on NASDAQ, covering the period from 2020 to 2024.</p>
+  <p class="sec-desc reveal delay-2">Ten large-cap technology stocks listed on NASDAQ, covering the period from 2021 to 2026.</p>
 
   <div class="ticker-wrap reveal">
     <div class="ticker-track">
@@ -155,8 +155,8 @@
     <div class="p-step reveal delay-4">
       <div class="p-num-wrap"><div class="p-circle">04</div></div>
       <div class="p-body">
-        <div class="p-title">BiLSTM model training</div>
-        <div class="p-desc">A Bidirectional LSTM network trained on chronologically split data — no data leakage. Processes rolling windows of fused price and sentiment features to predict next-day directional movement.</div>
+        <div class="p-title">XGBoost model training</div>
+        <div class="p-desc">A XGBoost model trained on chronologically split data — no data leakage. Processes rolling windows of fused price and sentiment features to predict next-day directional movement.</div>
         <div class="tag-row"><span class="tag">PyTorch</span><span class="tag">Chronological split</span><span class="tag">Google Colab</span></div>
       </div>
     </div>
@@ -164,8 +164,8 @@
       <div class="p-num-wrap"><div class="p-circle">05</div></div>
       <div class="p-body">
         <div class="p-title">Web application deployment</div>
-        <div class="p-desc">A React + FastAPI web app allows users to select a stock, trigger live BiLSTM inference, and view results alongside a FinBERT sentiment gauge — hosted on OCI Cloud (Always Free ARM instance).</div>
-        <div class="tag-row"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">FastAPI</span><span class="tag">OCI Cloud</span></div>
+        <div class="p-desc">A React + FastAPI web app allows users to select a stock, trigger live XGBoost inference, and view results alongside a FinBERT sentiment gauge. It hosted on Google Cloud.</div>
+        <div class="tag-row"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">FastAPI</span><span class="tag">Google Cloud</span></div>
       </div>
     </div>
   </div>
