@@ -2,85 +2,64 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About | FYP-26-S2-27</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<title>About | Rocket Trade</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 <style>
-.pipeline { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
-
-.p-step {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 1.25rem;
-  position: relative;
-}
-
-.p-step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 35px;
-  top: 44px;
-  bottom: -12px;
-  width: 1px;
-  background: var(--border2);
-}
-
-.p-circle {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--border2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--accent);
-  background: var(--surface);
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.p-body { padding-bottom: 2.25rem; }
-.p-title { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-.p-desc { font-size: 14px; color: var(--text2); line-height: 1.75; }
-
-.problem-solution {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-  margin-bottom: 3.5rem;
-}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 4rem; }
 
 .ps-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.75rem;
+  border-radius: 12px;
+  padding: 2rem 2.25rem;
+  transition: border-color 0.25s, transform 0.3s, box-shadow 0.3s;
 }
-
-.ps-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--accent);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-
-.ps-card p { font-size: 14px; color: var(--text2); line-height: 1.8; }
+.ps-card:hover { border-color: var(--border2); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.ps-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; }
+.ps-card p { font-size: 1rem; color: var(--text2); line-height: 1.85; }
 .ps-card p + p { margin-top: 0.75rem; }
 
-@media (max-width: 768px) {
-  .problem-solution { grid-template-columns: 1fr; }
+/* PIPELINE */
+.pipeline { display: flex; flex-direction: column; gap: 0; }
+.p-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1.5rem;
+  position: relative;
 }
+.p-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 31px; top: 48px; bottom: -8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.p-num-wrap { display: flex; flex-direction: column; align-items: center; padding-top: 2px; }
+.p-circle {
+  width: 44px; height: 44px;
+  border: 2px solid var(--border2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 12px; font-weight: 700;
+  color: var(--accent);
+  background: var(--surface);
+  flex-shrink: 0;
+  transition: border-color 0.3s, background 0.3s;
+}
+.p-step:hover .p-circle { border-color: var(--accent); background: var(--accent-dim); }
+.p-body { padding-bottom: 2.5rem; }
+.p-title { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.p-desc { font-size: 1rem; color: var(--text2); line-height: 1.8; }
+
+@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="logo.png" alt="Rocket Trade Logo" style="height:52px;width:auto;max-width:160px;object-fit:contain;" />
-    <span class="nav-logo-text">Rocket Trade</span>
+    <img src="logo.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
+    <!-- <span class="nav-logo-text">Rocket Trade</span> -->
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -93,34 +72,32 @@
 </nav>
 
 <div class="page">
-  <div class="page-header">
+  <div class="page-header reveal">
     <div class="page-eyebrow">About the Project</div>
     <h1 class="page-title">AI Stock Price Prediction<br />Using BiLSTM + FinBERT</h1>
     <p class="page-subtitle">A hybrid deep learning and NLP approach to forecasting next-day stock movement across large-cap technology equities listed on NASDAQ.</p>
   </div>
 
-  <!-- Problem / Solution -->
-  <div class="sec-label">Background</div>
-  <h2 class="sec-title">Problem &amp; Approach</h2>
-  <div class="problem-solution">
-    <div class="ps-card">
+  <div class="sec-label reveal">Background</div>
+  <h2 class="sec-title reveal delay-1">Problem &amp; Approach</h2>
+  <div class="two-col" style="margin-top:1.5rem">
+    <div class="ps-card reveal delay-1">
       <div class="ps-label">The Problem</div>
       <p>Stock price movement is driven by more than historical prices. News events, earnings surprises, executive statements, and macro narratives all move markets — yet most prediction models rely on technical indicators alone.</p>
       <p>This creates a gap: sentiment-driven moves are systematically missed by price-only models, leaving a meaningful signal on the table.</p>
     </div>
-    <div class="ps-card">
+    <div class="ps-card reveal delay-2">
       <div class="ps-label">Our Approach</div>
       <p>We designed a hybrid pipeline that fuses two complementary signals: <strong style="color:var(--text)">BiLSTM</strong> for learning temporal price patterns, and <strong style="color:var(--text)">FinBERT</strong> for extracting daily sentiment from financial news.</p>
       <p>The combined feature vector is used to predict whether each stock will close UP or DOWN on the next trading day — a binary directional classification task.</p>
     </div>
   </div>
 
-  <!-- Scope -->
-  <div class="sec-label" style="margin-top:3rem">Scope</div>
-  <h2 class="sec-title">What the system covers</h2>
-  <p class="sec-desc">Ten large-cap technology stocks listed on NASDAQ, covering the period from 2020 to 2024.</p>
+  <div class="sec-label reveal" style="margin-top:3.5rem">Scope</div>
+  <h2 class="sec-title reveal delay-1">What the system covers</h2>
+  <p class="sec-desc reveal delay-2">Ten large-cap technology stocks listed on NASDAQ, covering the period from 2020 to 2024.</p>
 
-  <div class="ticker-wrap">
+  <div class="ticker-wrap reveal">
     <div class="ticker-track">
       <span class="ticker-item">AAPL <span>Apple Inc.</span></span>
       <span class="ticker-item">MSFT <span>Microsoft Corp.</span></span>
@@ -145,75 +122,60 @@
     </div>
   </div>
 
-  <!-- Pipeline -->
-  <div class="sec-label" style="margin-top:3rem">Methodology</div>
-  <h2 class="sec-title">End-to-end pipeline</h2>
-  <p class="sec-desc">From raw market data and news articles to a live prediction interface — five stages, built for reproducibility.</p>
+  <div class="sec-label reveal" style="margin-top:1rem">Methodology</div>
+  <h2 class="sec-title reveal delay-1">End-to-end pipeline</h2>
+  <p class="sec-desc reveal delay-2">From raw market data and news articles to a live prediction interface — five stages, built for reproducibility.</p>
 
   <div class="pipeline">
-    <div class="p-step">
-      <div style="display:flex;flex-direction:column;align-items:center;padding-top:4px">
-        <div class="p-circle">01</div>
-      </div>
+    <div class="p-step reveal delay-1">
+      <div class="p-num-wrap"><div class="p-circle">01</div></div>
       <div class="p-body">
         <div class="p-title">Data collection</div>
         <div class="p-desc">OHLCV price data and financial news headlines pulled from multiple public APIs. Reddit and StockTwits were evaluated but excluded due to rate limits and API access restrictions.</div>
-        <div class="tag-row">
-          <span class="tag">yfinance</span><span class="tag">Finnhub</span><span class="tag">Alpha Vantage</span><span class="tag">NewsAPI</span><span class="tag">GDELT</span>
-        </div>
+        <div class="tag-row"><span class="tag">yfinance</span><span class="tag">Finnhub</span><span class="tag">Alpha Vantage</span><span class="tag">NewsAPI</span><span class="tag">GDELT</span></div>
       </div>
     </div>
-    <div class="p-step">
-      <div style="display:flex;flex-direction:column;align-items:center;padding-top:4px">
-        <div class="p-circle">02</div>
-      </div>
+    <div class="p-step reveal delay-2">
+      <div class="p-num-wrap"><div class="p-circle">02</div></div>
       <div class="p-body">
         <div class="p-title">FinBERT sentiment scoring</div>
         <div class="p-desc">8,444 financial news articles processed through a FinBERT transformer model. Each article is classified as Positive, Negative, or Neutral with a confidence score, then aggregated to a daily per-stock sentiment value.</div>
-        <div class="tag-row">
-          <span class="tag">Positive: 2,565</span><span class="tag red">Negative: 3,662</span><span class="tag amber">Neutral: 1,808</span>
-        </div>
+        <div class="tag-row"><span class="tag">Positive: 2,565</span><span class="tag red">Negative: 3,662</span><span class="tag amber">Neutral: 1,808</span></div>
       </div>
     </div>
-    <div class="p-step">
-      <div style="display:flex;flex-direction:column;align-items:center;padding-top:4px">
-        <div class="p-circle">03</div>
-      </div>
+    <div class="p-step reveal delay-3">
+      <div class="p-num-wrap"><div class="p-circle">03</div></div>
       <div class="p-body">
         <div class="p-title">Feature engineering &amp; normalisation</div>
         <div class="p-desc">Technical indicators (RSI, MACD, Bollinger Bands, volume ratios) computed from daily price data. Merged with sentiment scores and normalised using MinMaxScaler before training.</div>
-        <div class="tag-row">
-          <span class="tag blue">RSI</span><span class="tag blue">MACD</span><span class="tag blue">Bollinger Bands</span><span class="tag blue">Volume ratio</span><span class="tag blue">Sentiment score</span>
-        </div>
+        <div class="tag-row"><span class="tag blue">RSI</span><span class="tag blue">MACD</span><span class="tag blue">Bollinger Bands</span><span class="tag blue">Volume ratio</span><span class="tag blue">Sentiment score</span></div>
       </div>
     </div>
-    <div class="p-step">
-      <div style="display:flex;flex-direction:column;align-items:center;padding-top:4px">
-        <div class="p-circle">04</div>
-      </div>
+    <div class="p-step reveal delay-4">
+      <div class="p-num-wrap"><div class="p-circle">04</div></div>
       <div class="p-body">
         <div class="p-title">BiLSTM model training</div>
         <div class="p-desc">A Bidirectional LSTM network trained on chronologically split data — no data leakage. Processes rolling windows of fused price and sentiment features to predict next-day directional movement.</div>
-        <div class="tag-row">
-          <span class="tag">PyTorch</span><span class="tag">Chronological split</span><span class="tag">Google Colab</span>
-        </div>
+        <div class="tag-row"><span class="tag">PyTorch</span><span class="tag">Chronological split</span><span class="tag">Google Colab</span></div>
       </div>
     </div>
-    <div class="p-step">
-      <div style="display:flex;flex-direction:column;align-items:center;padding-top:4px">
-        <div class="p-circle">05</div>
-      </div>
+    <div class="p-step reveal delay-5">
+      <div class="p-num-wrap"><div class="p-circle">05</div></div>
       <div class="p-body">
         <div class="p-title">Web application deployment</div>
         <div class="p-desc">A React + FastAPI web app allows users to select a stock, trigger live BiLSTM inference, and view results alongside a FinBERT sentiment gauge — hosted on OCI Cloud (Always Free ARM instance).</div>
-        <div class="tag-row">
-          <span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">FastAPI</span><span class="tag">OCI Cloud</span>
-        </div>
+        <div class="tag-row"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">FastAPI</span><span class="tag">OCI Cloud</span></div>
       </div>
     </div>
   </div>
 </div>
 
 <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
