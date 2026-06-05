@@ -2,100 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Features | FYP-26-S2-27</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<title>Features | Rocket Trade</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 <style>
 .feature-block {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: start;
-  padding: 2.5rem 0;
+  gap: 3rem;
+  align-items: center;
+  padding: 3.5rem 0;
   border-bottom: 1px solid var(--border);
 }
-.feature-block:first-of-type { border-top: 1px solid var(--border); margin-top: 1rem; }
+.feature-block:first-of-type { border-top: 1px solid var(--border); }
 .feature-block:last-of-type { border-bottom: none; }
-.feature-block.reverse { direction: rtl; }
-.feature-block.reverse > * { direction: ltr; }
 
-.feat-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text2);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
-}
-
-.feat-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
-}
-
-.feat-desc {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
+.feat-num { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 0.6rem; }
+.feat-title { font-size: 1.5rem; font-weight: 800; color: var(--text); letter-spacing: -0.025em; line-height: 1.25; margin-bottom: 1rem; }
+.feat-desc { font-size: 1rem; color: var(--text2); line-height: 1.85; margin-bottom: 0.5rem; }
 
 .feat-visual {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.5rem;
+  border-radius: 12px;
+  padding: 1.75rem;
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text2);
   line-height: 1.9;
-  min-height: 160px;
+  min-height: 180px;
+  transition: border-color 0.25s;
 }
-
-.feat-visual .hl { color: var(--accent); }
+.feat-visual:hover { border-color: var(--border2); }
+.feat-visual .hl  { color: var(--accent); }
 .feat-visual .hl2 { color: var(--blue); }
 .feat-visual .hl3 { color: var(--amber); }
 .feat-visual .hl4 { color: var(--red); }
-.feat-visual .comment { color: var(--text2); }
+.feat-visual .cm  { color: var(--text3); }
 
-.mini-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-top: 1.5rem;
-}
-
+.mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 1.5rem; }
 .mini-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1rem;
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
 }
-
-.mini-card-num {
-  font-family: var(--mono);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.mini-card-lbl { font-size: 12px; color: var(--text2); }
+.mini-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.mini-card-num { font-family: var(--mono); font-size: 1.6rem; font-weight: 700; line-height: 1; margin-bottom: 5px; }
+.mini-card-lbl { font-size: 13px; color: var(--text2); }
 
 @media (max-width: 768px) {
-  .feature-block, .feature-block.reverse { grid-template-columns: 1fr; direction: ltr; }
+  .feature-block { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 </style>
 </head>
 <body>
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="logo.png" alt="Rocket Trade Logo" style="height:52px;width:auto;max-width:160px;object-fit:contain;" />
-    <span class="nav-logo-text">Rocket Trade</span>
+    <img src="logo.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
+    <!-- <span class="nav-logo-text">Rocket Trade</span> -->
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -108,7 +74,7 @@
 </nav>
 
 <div class="page">
-  <div class="page-header">
+  <div class="page-header reveal">
     <div class="page-eyebrow">System Features</div>
     <h1 class="page-title">What the system does</h1>
     <p class="page-subtitle">Key capabilities across the data pipeline, machine learning models, and web application interface.</p>
@@ -116,7 +82,7 @@
 
   <!-- Feature 1 -->
   <div class="feature-block">
-    <div>
+    <div class="reveal-left">
       <div class="feat-num">01 / Data Pipeline</div>
       <h2 class="feat-title">Multi-source financial data collection</h2>
       <p class="feat-desc">Automated scripts pull historical OHLCV price data and news headlines from five public APIs, deduplicate and clean the records, then store them in a unified format ready for feature engineering.</p>
@@ -124,8 +90,8 @@
         <span class="tag">yfinance</span><span class="tag">Finnhub</span><span class="tag">Alpha Vantage</span><span class="tag">NewsAPI</span><span class="tag">GDELT</span>
       </div>
     </div>
-    <div class="feat-visual">
-      <span class="comment"># Data collected per stock</span><br/>
+    <div class="feat-visual reveal-right">
+      <span class="cm"># Data collected per stock</span><br/>
       tickers = [<span class="hl">'AAPL'</span>, <span class="hl">'MSFT'</span>, <span class="hl">'GOOGL'</span>,<br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'AMZN'</span>, <span class="hl">'NVDA'</span>, <span class="hl">'META'</span>,<br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'TSLA'</span>, <span class="hl">'AVGO'</span>, <span class="hl">'ORCL'</span>,<br/>
@@ -137,32 +103,9 @@
   </div>
 
   <!-- Feature 2 -->
-  <div class="feature-block reverse">
-    <div>
-      <div class="feat-num">02 / NLP</div>
-      <h2 class="feat-title">FinBERT sentiment scoring</h2>
-      <p class="feat-desc">Every financial news headline is passed through a FinBERT transformer model — a BERT variant fine-tuned on financial text — to produce Positive, Negative, or Neutral sentiment labels with confidence scores. Scores are aggregated daily per stock.</p>
-      <div class="mini-cards">
-        <div class="mini-card">
-          <div class="mini-card-num" style="color:var(--accent)">2,565</div>
-          <div class="mini-card-lbl">Positive articles</div>
-        </div>
-        <div class="mini-card">
-          <div class="mini-card-num" style="color:var(--red)">3,662</div>
-          <div class="mini-card-lbl">Negative articles</div>
-        </div>
-        <div class="mini-card">
-          <div class="mini-card-num" style="color:var(--amber)">1,808</div>
-          <div class="mini-card-lbl">Neutral articles</div>
-        </div>
-        <div class="mini-card">
-          <div class="mini-card-num">8,444</div>
-          <div class="mini-card-lbl">Total scored</div>
-        </div>
-      </div>
-    </div>
-    <div class="feat-visual">
-      <span class="comment"># FinBERT output example</span><br/>
+  <div class="feature-block">
+    <div class="feat-visual reveal-left">
+      <span class="cm"># FinBERT output example</span><br/>
       {<br/>
       &nbsp;&nbsp;<span class="hl2">"headline"</span>: <span class="hl">"NVDA beats Q3 earnings..."</span>,<br/>
       &nbsp;&nbsp;<span class="hl2">"label"</span>: <span class="hl">"positive"</span>,<br/>
@@ -171,11 +114,22 @@
       &nbsp;&nbsp;<span class="hl2">"date"</span>: <span class="hl">"2024-11-20"</span><br/>
       }
     </div>
+    <div class="reveal-right">
+      <div class="feat-num">02 / NLP</div>
+      <h2 class="feat-title">FinBERT sentiment scoring</h2>
+      <p class="feat-desc">Every financial news headline is passed through a FinBERT transformer model to produce Positive, Negative, or Neutral sentiment labels with confidence scores. Scores are aggregated daily per stock.</p>
+      <div class="mini-cards">
+        <div class="mini-card"><div class="mini-card-num" style="color:var(--accent)">2,565</div><div class="mini-card-lbl">Positive articles</div></div>
+        <div class="mini-card"><div class="mini-card-num" style="color:var(--red)">3,662</div><div class="mini-card-lbl">Negative articles</div></div>
+        <div class="mini-card"><div class="mini-card-num" style="color:var(--amber)">1,808</div><div class="mini-card-lbl">Neutral articles</div></div>
+        <div class="mini-card"><div class="mini-card-num">8,444</div><div class="mini-card-lbl">Total scored</div></div>
+      </div>
+    </div>
   </div>
 
   <!-- Feature 3 -->
   <div class="feature-block">
-    <div>
+    <div class="reveal-left">
       <div class="feat-num">03 / Deep Learning</div>
       <h2 class="feat-title">Bidirectional LSTM prediction model</h2>
       <p class="feat-desc">A BiLSTM neural network processes rolling windows of combined price and sentiment features. The bidirectional architecture captures both past and contextual temporal patterns, outputting a probability for the next-day UP / DOWN direction.</p>
@@ -183,30 +137,22 @@
         <span class="tag">PyTorch</span><span class="tag">BiLSTM</span><span class="tag">Sliding window</span><span class="tag">Chronological split</span>
       </div>
     </div>
-    <div class="feat-visual">
-      <span class="comment"># Input features per timestep</span><br/>
+    <div class="feat-visual reveal-right">
+      <span class="cm"># Input features per timestep</span><br/>
       features = [<br/>
       &nbsp;&nbsp;<span class="hl2">'open'</span>, <span class="hl2">'high'</span>, <span class="hl2">'low'</span>, <span class="hl2">'close'</span>,<br/>
       &nbsp;&nbsp;<span class="hl2">'volume'</span>, <span class="hl2">'rsi'</span>, <span class="hl2">'macd'</span>,<br/>
       &nbsp;&nbsp;<span class="hl2">'bb_upper'</span>, <span class="hl2">'bb_lower'</span>,<br/>
-      &nbsp;&nbsp;<span class="hl">'sentiment_score'</span><span class="comment">  # FinBERT</span><br/>
+      &nbsp;&nbsp;<span class="hl">'sentiment_score'</span> <span class="cm"># FinBERT</span><br/>
       ]<br/><br/>
       output → <span class="hl">'UP'</span> | <span class="hl4">'DOWN'</span>
     </div>
   </div>
 
   <!-- Feature 4 -->
-  <div class="feature-block reverse">
-    <div>
-      <div class="feat-num">04 / Web Application</div>
-      <h2 class="feat-title">Live prediction interface</h2>
-      <p class="feat-desc">A React frontend backed by a FastAPI Python server. Users select a stock from a dropdown, the system auto-triggers a BiLSTM inference call, and returns the directional prediction alongside the FinBERT sentiment gauge — making the model's inputs visible to the user.</p>
-      <div class="tag-row">
-        <span class="tag">React + Vite</span><span class="tag">Tailwind CSS</span><span class="tag">FastAPI</span><span class="tag">OCI Cloud</span>
-      </div>
-    </div>
-    <div class="feat-visual">
-      <span class="comment"># API response structure</span><br/>
+  <div class="feature-block">
+    <div class="feat-visual reveal-left">
+      <span class="cm"># API response</span><br/>
       {<br/>
       &nbsp;&nbsp;<span class="hl2">"ticker"</span>: <span class="hl">"AAPL"</span>,<br/>
       &nbsp;&nbsp;<span class="hl2">"prediction"</span>: <span class="hl">"UP"</span>,<br/>
@@ -215,10 +161,23 @@
       &nbsp;&nbsp;<span class="hl2">"sentiment_label"</span>: <span class="hl">"positive"</span><br/>
       }
     </div>
+    <div class="reveal-right">
+      <div class="feat-num">04 / Web Application</div>
+      <h2 class="feat-title">Live prediction interface</h2>
+      <p class="feat-desc">A React frontend backed by a FastAPI Python server. Users select a stock, the system auto-triggers BiLSTM inference, and returns the directional prediction alongside the FinBERT sentiment gauge.</p>
+      <div class="tag-row">
+        <span class="tag">React + Vite</span><span class="tag">Tailwind CSS</span><span class="tag">FastAPI</span><span class="tag">OCI Cloud</span>
+      </div>
+    </div>
   </div>
-
 </div>
 
 <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
