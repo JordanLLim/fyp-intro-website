@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Team | FYP-26-S2-27</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<title>Team | Rocket Trade</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 <style>
 .team-grid {
@@ -16,304 +16,114 @@
 .team-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 2rem;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
 }
+.team-card:hover { border-color: var(--border2); background: var(--surface2); transform: translateY(-4px); }
 
-.team-card:hover {
-  border-color: var(--border2);
-  background: var(--surface2);
-}
-
-.team-avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--accent-glow);
-  border: 1px solid var(--border2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 1.25rem;
-}
-
-.team-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 2px;
-}
-
-.team-role {
-  font-size: 13px;
-  color: var(--accent);
-  font-family: var(--mono);
-  letter-spacing: 0.04em;
-  margin-bottom: 1rem;
-}
-
-.team-desc {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.8;
-  margin-bottom: 1.25rem;
-}
-
-.team-contrib {
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
-}
-
-.team-contrib-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--text2);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
-}
-
-.contrib-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.contrib-item {
-  font-size: 13px;
-  color: var(--text2);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.contrib-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-}
+.team-name { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.team-role { font-size: 13px; color: var(--accent); font-family: var(--mono); letter-spacing: 0.04em; margin-bottom: 1rem; }
+.team-desc { font-size: 15px; color: var(--text2); line-height: 1.85; }
 
 .sup-section {
-  margin-top: 3rem;
-  padding-top: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
   border-top: 1px solid var(--border);
+}
 
-  display: flex;
-  gap: 2rem;
+.sup-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .sup-card {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 1.5rem 2rem;
-  max-width: 480px;
+  transition: border-color 0.25s, transform 0.25s;
 }
+.sup-card:hover { border-color: var(--border2); transform: translateY(-3px); }
 
-.sup-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(96,165,250,0.08);
-  border: 1px solid rgba(96,165,250,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mono);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--blue);
-  flex-shrink: 0;
-}
-
-.sup-name { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
-.sup-role { font-size: 13px; color: var(--text2); }
+.sup-name { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.sup-role { font-size: 14px; color: var(--text2); }
 
 @media (max-width: 768px) {
-  .team-grid { grid-template-columns: 1fr; }
+  .team-grid, .sup-row { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="logo.png" alt="Rocket Trade Logo" style="height:48px;width:auto;max-width:180px;object-fit:contain;" />
-    <!-- <span class="nav-logo-text">Rocket Trade</span> -->
+    <img src="logo.png" alt="Rocket Trade Logo" style="height:52px;width:auto;max-width:160px;object-fit:contain;" />
+    <span class="nav-logo-text">Rocket Trade</span>
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="features.html">Features</a></li>
     <li><a href="team.html" class="active">Team</a></li>
-    <li><a href="demo.html">Demo</a></li>
+    <li><a href="meetings.html">Meetings</a></li>
     <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz?usp=drive_link" target="_blank">Docs ↗</a></li>
   </ul>
 </nav>
 
 <div class="page">
   <div class="page-header">
-    <div class="page-eyebrow">The Team</div>
-    <h1 class="page-title">Meet the developers</h1>
-    <!-- <p class="page-subtitle">Developed by a five-person team.</p> -->
+    <div class="page-eyebrow anim-fade-in">The Team</div>
+    <h1 class="page-title anim-fade-up anim-d1">Meet the developers</h1>
   </div>
 
   <div class="team-grid">
-    <!-- Member 1 - Leader -->
-    <div class="team-card">
-      <!-- <div class="team-avatar">J</div> -->
-      <div class="team-name">Nguy Kim Anh </div>
+    <div class="team-card anim-fade-up anim-d1">
+      <div class="team-name">Nguy Kim Anh</div>
       <div class="team-role">Team Leader · Documenter · Backend Developer</div>
-      <p class="team-desc">
-        UOW ID：9182226 <br />
-        SIM ID: 10247215 <br />
-        Email: nguy001@mymail.sim.edu.sg
-      </p>
-      <!-- <div class="team-contrib">
-        <div class="team-contrib-label">Contributions</div>
-        <div class="contrib-list">
-          <div class="contrib-item"><div class="contrib-dot"></div>BiLSTM model design &amp; training (PyTorch)</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FinBERT sentiment scoring pipeline</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>React + Vite frontend development</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FastAPI backend &amp; REST API</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>OCI Cloud deployment &amp; infrastructure</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>Data collection scripts (5 APIs)</div>
-        </div>
-      </div> -->
+      <p class="team-desc">UOW ID: 9182226<br />SIM ID: 10247215<br />Email: nguy001@mymail.sim.edu.sg</p>
     </div>
-
-    <!-- Member 2 - Classmate placeholder -->
-    <div class="team-card">
-      <!-- <div class="team-avatar">J</div> -->
-      <div class="team-name">Jordan Lim Jun Hong  </div>
+    <div class="team-card anim-fade-up anim-d2">
+      <div class="team-name">Jordan Lim Jun Hong</div>
       <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">
-        UOW ID：8495816  <br />
-        SIM ID: 10256580  <br />
-        Email: jjhlim003@mymail.sim.edu.sg
-      </p>
-      <!-- <div class="team-contrib">
-        <div class="team-contrib-label">Contributions</div>
-        <div class="contrib-list">
-          <div class="contrib-item"><div class="contrib-dot"></div>BiLSTM model design &amp; training (PyTorch)</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FinBERT sentiment scoring pipeline</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>React + Vite frontend development</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FastAPI backend &amp; REST API</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>OCI Cloud deployment &amp; infrastructure</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>Data collection scripts (5 APIs)</div>
-        </div>
-      </div> -->
+      <p class="team-desc">UOW ID: 8495816<br />SIM ID: 10256580<br />Email: jjhlim003@mymail.sim.edu.sg</p>
     </div>
-
-    <!-- Member 3 - Classmate placeholder -->
-    <div class="team-card">
-      <!-- <div class="team-avatar">J</div> -->
-      <div class="team-name">Kim Bogyeong  </div>
+    <div class="team-card anim-fade-up anim-d3">
+      <div class="team-name">Kim Bogyeong</div>
       <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">
-        UOW ID：9096838   <br />
-        SIM ID: 10256782   <br />
-        Email: kim204@mymail.sim.edu.sg
-      </p>
-      <!-- <div class="team-contrib">
-        <div class="team-contrib-label">Contributions</div>
-        <div class="contrib-list">
-          <div class="contrib-item"><div class="contrib-dot"></div>BiLSTM model design &amp; training (PyTorch)</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FinBERT sentiment scoring pipeline</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>React + Vite frontend development</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FastAPI backend &amp; REST API</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>OCI Cloud deployment &amp; infrastructure</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>Data collection scripts (5 APIs)</div>
-        </div>
-      </div> -->
+      <p class="team-desc">UOW ID: 9096838<br />SIM ID: 10256782<br />Email: kim204@mymail.sim.edu.sg</p>
     </div>
-
-    <!-- Member 4 - Classmate placeholder -->
-    <div class="team-card">
-      <!-- <div class="team-avatar">J</div> -->
-      <div class="team-name">Lanice Lam Wen Xin   </div>
+    <div class="team-card anim-fade-up anim-d4">
+      <div class="team-name">Lanice Lam Wen Xin</div>
       <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">
-        UOW ID：8576506    <br />
-        SIM ID: 10257775    <br />
-        Email: lwxlam001@mymail.sim.edu.sg
-      </p>
-      <!-- <div class="team-contrib">
-        <div class="team-contrib-label">Contributions</div>
-        <div class="contrib-list">
-          <div class="contrib-item"><div class="contrib-dot"></div>BiLSTM model design &amp; training (PyTorch)</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FinBERT sentiment scoring pipeline</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>React + Vite frontend development</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FastAPI backend &amp; REST API</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>OCI Cloud deployment &amp; infrastructure</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>Data collection scripts (5 APIs)</div>
-        </div>
-      </div> -->
+      <p class="team-desc">UOW ID: 8576506<br />SIM ID: 10257775<br />Email: lwxlam001@mymail.sim.edu.sg</p>
     </div>
-
-    <!-- Member 5 - Classmate placeholder -->
-    <div class="team-card">
-      <!-- <div class="team-avatar">J</div> -->
-      <div class="team-name">Lim Ying Xin   </div>
+    <div class="team-card anim-fade-up anim-d5">
+      <div class="team-name">Lim Ying Xin</div>
       <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">
-        UOW ID：9097156    <br />
-        SIM ID: 10253809    <br />
-        Email: yxlim043@mymail.sim.edu.sg
-      </p>
-      <!-- <div class="team-contrib">
-        <div class="team-contrib-label">Contributions</div>
-        <div class="contrib-list">
-          <div class="contrib-item"><div class="contrib-dot"></div>BiLSTM model design &amp; training (PyTorch)</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FinBERT sentiment scoring pipeline</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>React + Vite frontend development</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>FastAPI backend &amp; REST API</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>OCI Cloud deployment &amp; infrastructure</div>
-          <div class="contrib-item"><div class="contrib-dot"></div>Data collection scripts (5 APIs)</div>
-        </div>
-      </div> -->
+      <p class="team-desc">UOW ID: 9097156<br />SIM ID: 10253809<br />Email: yxlim043@mymail.sim.edu.sg</p>
     </div>
   </div>
 
-<!-- Supervisor & Accessor side by side -->
   <div class="sup-section">
+    <div class="sec-label">Academic Staff</div>
+    <h2 class="sec-title" style="margin-bottom:1.25rem">Supervisor &amp; Accessor</h2>
     <div class="sup-row">
-      <div class="sup-block">
-        <div class="sec-label">Supervisor</div>
-        <h2 class="sec-title" style="margin-bottom:1rem">Project supervisor</h2>
-        <div class="sup-card">
-          <div>
-            <div class="sup-name">Mr Ee Kiam Keong</div>
-            <!-- <div class="sup-role">Singapore Institute of Management</div> -->
-          </div>
-        </div>
+      <div class="sup-card anim-fade-up anim-d1">
+        <div class="sec-label" style="margin-bottom:0.5rem">Supervisor</div>
+        <div class="sup-name">Mr Ee Kiam Keong</div>
+        <div class="sup-role">Singapore Institute of Management</div>
       </div>
-      <div class="sup-block">
-        <div class="sec-label">Accessor</div>
-        <h2 class="sec-title" style="margin-bottom:1rem">Project accessor</h2>
-        <div class="sup-card">
-          <div>
-            <div class="sup-name">Mr Premrajan Ponnambath</div>
-            <!-- <div class="sup-role">Singapore Institute of Management</div> -->
-          </div>
-        </div>
+      <div class="sup-card anim-fade-up anim-d2">
+        <div class="sec-label" style="margin-bottom:0.5rem">Accessor</div>
+        <div class="sup-name">Mr Premrajan Ponnambath</div>
+        <div class="sup-role">Singapore Institute of Management</div>
       </div>
     </div>
   </div>
 </div>
 
-<footer>
-  <span>FYP-26-S2-27 · UOW · 2026</span>
-  <!-- <span>BiLSTM + FinBERT · PyTorch · FastAPI · React</span> -->
-</footer>
+<footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
 </body>
 </html>
