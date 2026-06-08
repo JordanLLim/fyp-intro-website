@@ -1,288 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | Rocket Trade</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About | Rocket Trade</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 4rem; }
+.ps-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 2.25rem; transition: border-color 0.25s, transform 0.3s, box-shadow 0.3s; }
+.ps-card:hover { border-color: var(--border2); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.ps-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 1rem; }
+.ps-card p { font-size: 1rem; color: var(--text2); line-height: 1.85; }
+.ps-card p + p { margin-top: 0.75rem; }
 
-    .ps-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem 2.25rem;
-      transition: border-color 0.25s, transform 0.3s, box-shadow 0.3s;
-    }
+.arch-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+.arch-table th { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border2); }
+.arch-table td { padding: 14px 16px; color: var(--text2); border-bottom: 1px solid var(--border); font-size: 15px; vertical-align: top; }
+.arch-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+.arch-table tr:last-child td { border-bottom: none; }
 
-    .ps-card:hover {
-      border-color: var(--border2);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
+.pipeline { display: flex; flex-direction: column; gap: 0; }
+.p-step { display: grid; grid-template-columns: 64px 1fr; gap: 1.5rem; position: relative; }
+.p-step:not(:last-child)::after { content: ''; position: absolute; left: 31px; top: 48px; bottom: -8px; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent); }
+.p-num-wrap { display: flex; flex-direction: column; align-items: center; padding-top: 2px; }
+.p-circle { width: 44px; height: 44px; border: 2px solid var(--border2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); background: var(--surface); flex-shrink: 0; transition: border-color 0.3s, background 0.3s; }
+.p-step:hover .p-circle { border-color: var(--accent); background: var(--accent-dim); }
+.p-body { padding-bottom: 2.5rem; }
+.p-title { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.p-desc { font-size: 1rem; color: var(--text2); line-height: 1.8; }
 
-    .ps-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .ps-card p {
-      font-size: 1rem;
-      color: var(--text2);
-      line-height: 1.85;
-    }
-
-    .ps-card p+p {
-      margin-top: 0.75rem;
-    }
-
-    /* PIPELINE */
-    .pipeline {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .p-step {
-      display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 1.5rem;
-      position: relative;
-    }
-
-    .p-step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      left: 31px;
-      top: 48px;
-      bottom: -8px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-    }
-
-    .p-num-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 2px;
-    }
-
-    .p-circle {
-      width: 44px;
-      height: 44px;
-      border: 2px solid var(--border2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--accent);
-      background: var(--surface);
-      flex-shrink: 0;
-      transition: border-color 0.3s, background 0.3s;
-    }
-
-    .p-step:hover .p-circle {
-      border-color: var(--accent);
-      background: var(--accent-dim);
-    }
-
-    .p-body {
-      padding-bottom: 2.5rem;
-    }
-
-    .p-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-
-    .p-desc {
-      font-size: 1rem;
-      color: var(--text2);
-      line-height: 1.8;
-    }
-
-    @media (max-width: 768px) {
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+</style>
 </head>
-
 <body>
-  <nav>
-    <a class="nav-logo" href="index.html">
-      <img src="logo_cropped.png" alt="Rocket Trade" style="width:auto;object-fit:contain;" />
-      <!-- <span class="nav-logo-text">Rocket Trade</span> -->
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="demo.html">Demo</a></li>
-      <li><a href="meetings.html">Meetings</a></li>
-      <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz?usp=drive_link"
-          target="_blank">Docs ↗</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="demo.html">Demo</a></li>
+    <li><a href="meetings.html">Meetings</a></li>
+    <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz" target="_blank">Docs ↗</a></li>
+  </ul>
+</nav>
+<div class="page">
+  <div class="page-header reveal">
+    <div class="page-eyebrow">About the Project</div>
+    <h1 class="page-title">Webservice for Stock Market Prediction</h1>
+    <p class="page-subtitle">An AI-driven financial intelligence platform that transforms complex market data and news sentiment into clear, actionable investment insights — for everyone from beginner investors to seasoned traders.</p>
+  </div>
 
-  <div class="page">
-    <div class="page-header reveal">
-      <div class="page-eyebrow">About the Project</div>
-      <h1 class="page-title">Rocket Trade</h1>
-      <p class="page-subtitle">A hybrid deep learning and NLP approach to forecasting next-day stock movement across
-        large-cap technology equities listed on NASDAQ.</p>
+  <div class="sec-label reveal">Background</div>
+  <h2 class="sec-title reveal delay-1">Problem &amp; Approach</h2>
+  <div class="two-col" style="margin-top:1.5rem">
+    <div class="ps-card reveal delay-1">
+      <div class="ps-label">The Problem</div>
+      <p>Individual investors face information overload — countless real-time news, price data, and technical signals that are difficult to interpret without professional knowledge.</p>
+      <p>Most existing platforms focus on powerful analytics but sacrifice usability, leaving beginner investors overwhelmed. Others lack sentiment analysis, missing the "why" behind price movements.</p>
     </div>
-
-    <div class="sec-label reveal">Background</div>
-    <h2 class="sec-title reveal delay-1">Problem &amp; Approach</h2>
-    <div class="two-col" style="margin-top:1.5rem">
-      <div class="ps-card reveal delay-1">
-        <div class="ps-label">The Problem</div>
-        <p>Stock price movement is driven by more than historical prices. News events, earnings surprises, executive
-          statements, and macro narratives all move markets — yet most prediction models rely on technical indicators
-          alone.</p>
-        <p>This creates a gap: sentiment-driven moves are systematically missed by price-only models, leaving a
-          meaningful signal on the table.</p>
-      </div>
-      <div class="ps-card reveal delay-2">
-        <div class="ps-label">Our Approach</div>
-        <p>We designed a hybrid pipeline that fuses two complementary signals: <strong
-            style="color:var(--text)">XGBoost</strong> for learning temporal price patterns, and <strong
-            style="color:var(--text)">FinBERT</strong> for extracting daily sentiment from financial news.</p>
-        <p>The combined feature vector is used to predict whether each stock will close UP or DOWN on the next trading
-          day — a binary directional classification task.</p>
-      </div>
-    </div>
-
-    <div class="sec-label reveal" style="margin-top:3.5rem">Scope</div>
-    <h2 class="sec-title reveal delay-1">What the system covers</h2>
-    <p class="sec-desc reveal delay-2">Ten large-cap technology stocks listed on NASDAQ, covering the period from 2021
-      to 2026.</p>
-
-    <div class="ticker-wrap reveal">
-      <div class="ticker-track">
-        <span class="ticker-item">AAPL <span>Apple Inc.</span></span>
-        <span class="ticker-item">MSFT <span>Microsoft Corp.</span></span>
-        <span class="ticker-item">GOOGL <span>Alphabet Inc.</span></span>
-        <span class="ticker-item">AMZN <span>Amazon.com Inc.</span></span>
-        <span class="ticker-item">NVDA <span>NVIDIA Corp.</span></span>
-        <span class="ticker-item">META <span>Meta Platforms</span></span>
-        <span class="ticker-item">TSLA <span>Tesla Inc.</span></span>
-        <span class="ticker-item">AVGO <span>Broadcom Inc.</span></span>
-        <span class="ticker-item">ORCL <span>Oracle Corp.</span></span>
-        <span class="ticker-item">AMD <span>Advanced Micro Devices</span></span>
-        <span class="ticker-item">AAPL <span>Apple Inc.</span></span>
-        <span class="ticker-item">MSFT <span>Microsoft Corp.</span></span>
-        <span class="ticker-item">GOOGL <span>Alphabet Inc.</span></span>
-        <span class="ticker-item">AMZN <span>Amazon.com Inc.</span></span>
-        <span class="ticker-item">NVDA <span>NVIDIA Corp.</span></span>
-        <span class="ticker-item">META <span>Meta Platforms</span></span>
-        <span class="ticker-item">TSLA <span>Tesla Inc.</span></span>
-        <span class="ticker-item">AVGO <span>Broadcom Inc.</span></span>
-        <span class="ticker-item">ORCL <span>Oracle Corp.</span></span>
-        <span class="ticker-item">AMD <span>Advanced Micro Devices</span></span>
-      </div>
-    </div>
-
-    <div class="sec-label reveal" style="margin-top:1rem">Methodology</div>
-    <h2 class="sec-title reveal delay-1">End-to-end pipeline</h2>
-    <p class="sec-desc reveal delay-2">From raw market data and news articles to a live prediction interface — five
-      stages, built for reproducibility.</p>
-
-    <div class="pipeline">
-      <div class="p-step reveal delay-1">
-        <div class="p-num-wrap">
-          <div class="p-circle">01</div>
-        </div>
-        <div class="p-body">
-          <div class="p-title">Data collection</div>
-          <div class="p-desc">OHLCV price data and financial news headlines pulled from multiple public APIs. Reddit and
-            StockTwits were evaluated but excluded due to rate limits and API access restrictions.</div>
-          <div class="tag-row"><span class="tag">yfinance</span><span class="tag">Finnhub</span><span class="tag">Alpha
-              Vantage</span><span class="tag">NewsAPI</span><span class="tag">GDELT</span></div>
-        </div>
-      </div>
-      <div class="p-step reveal delay-2">
-        <div class="p-num-wrap">
-          <div class="p-circle">02</div>
-        </div>
-        <div class="p-body">
-          <div class="p-title">FinBERT sentiment scoring</div>
-          <div class="p-desc">8,444 financial news articles processed through a FinBERT transformer model. Each article
-            is classified as Positive, Negative, or Neutral with a confidence score, then aggregated to a daily
-            per-stock sentiment value.</div>
-          <div class="tag-row"><span class="tag">Positive: 2,565</span><span class="tag red">Negative: 3,662</span><span
-              class="tag amber">Neutral: 1,808</span></div>
-        </div>
-      </div>
-      <div class="p-step reveal delay-3">
-        <div class="p-num-wrap">
-          <div class="p-circle">03</div>
-        </div>
-        <div class="p-body">
-          <div class="p-title">Feature engineering &amp; normalisation</div>
-          <div class="p-desc">Technical indicators (RSI, MACD, Bollinger Bands, volume ratios) computed from daily price
-            data. Merged with sentiment scores and normalised using MinMaxScaler before training.</div>
-          <div class="tag-row"><span class="tag blue">RSI</span><span class="tag blue">MACD</span><span
-              class="tag blue">Bollinger Bands</span><span class="tag blue">Volume ratio</span><span
-              class="tag blue">Sentiment score</span></div>
-        </div>
-      </div>
-      <div class="p-step reveal delay-4">
-        <div class="p-num-wrap">
-          <div class="p-circle">04</div>
-        </div>
-        <div class="p-body">
-          <div class="p-title">XGBoost model training</div>
-          <div class="p-desc">A XGBoost model trained on chronologically split data — no data leakage. Processes rolling
-            windows of fused price and sentiment features to predict next-day directional movement.</div>
-          <div class="tag-row"><span class="tag">PyTorch</span><span class="tag">Chronological split</span><span
-              class="tag">Google Colab</span></div>
-        </div>
-      </div>
-      <div class="p-step reveal delay-5">
-        <div class="p-num-wrap">
-          <div class="p-circle">05</div>
-        </div>
-        <div class="p-body">
-          <div class="p-title">Web application deployment</div>
-          <div class="p-desc">A React + FastAPI web app allows users to select a stock, trigger live XGBoost inference,
-            and view results alongside a FinBERT sentiment gauge. It hosted on Google Cloud.</div>
-          <div class="tag-row"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind
-              CSS</span><span class="tag">FastAPI</span><span class="tag">Google Cloud</span></div>
-        </div>
-      </div>
+    <div class="ps-card reveal delay-2">
+      <div class="ps-label">Our Approach</div>
+      <p>A full-stack web platform combining <strong style="color:var(--text)">XGBoost + FinBERT</strong> AI predictions with real-time dashboards, simulated portfolios, expert portfolios, and a community forum.</p>
+      <p>The platform supports five user roles — Basic User, Premium User, Consultant, Administrator, and Guest — each with tailored access to features matching their needs.</p>
     </div>
   </div>
 
-  <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
-  <script>
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
-  </script>
-</body>
+  <div class="sec-label reveal" style="margin-top:3.5rem">Vision</div>
+  <h2 class="sec-title reveal delay-1">Our vision</h2>
+  <p class="sec-desc reveal delay-2">We are dedicated to transforming how individuals understand and interact with financial markets. Our vision is a platform where data-driven insights are at the core of every investment decision — accessible to anyone with an internet connection, not just professionals.</p>
 
+  <div class="two-col">
+    <div class="ps-card reveal delay-1">
+      <div class="ps-label">For Beginner Investors</div>
+      <p>Predict trends with sentiment intelligence, monitor markets in real-time, simplify complex patterns through interactive dashboards, and learn through a Knowledge Hub and expert portfolios.</p>
+    </div>
+    <div class="ps-card reveal delay-2">
+      <div class="ps-label">For All Users</div>
+      <p>Empower smarter investing with real-time news insights, enhance analysis with interactive charts, and improve trading decisions through direct interaction with certified stock consultants.</p>
+    </div>
+  </div>
+
+  <div class="sec-label reveal" style="margin-top:3.5rem">Architecture</div>
+  <h2 class="sec-title reveal delay-1">System architecture</h2>
+  <p class="sec-desc reveal delay-2">Three-tier architecture connecting a React.js frontend, FastAPI backend, and MySQL database — with an external stock API integration and ML prediction engine.</p>
+
+  <div class="reveal">
+    <table class="arch-table">
+      <thead><tr><th>Layer</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>Presentation Layer</td><td>React.js frontend — users search stocks, view dashboards, manage watchlists, check predictions, and access account features via an interactive web interface.</td></tr>
+        <tr><td>Application Layer</td><td>FastAPI backend — handles user authentication, role-based access, stock data processing, AI prediction requests, portfolio functions, and all system logic.</td></tr>
+        <tr><td>Data Layer</td><td>MySQL database — stores user accounts, roles, watchlists, portfolio records, transaction history, prediction results, alerts, forum posts, and expert content.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-label reveal" style="margin-top:3.5rem">AI Pipeline</div>
+  <h2 class="sec-title reveal delay-1">Machine learning pipeline</h2>
+  <p class="sec-desc reveal delay-2">XGBoost gradient boosting combined with FinBERT financial sentiment analysis — trained on data from 2021 to 2026 across 10 large-cap NASDAQ tech stocks.</p>
+
+  <div class="ticker-wrap reveal">
+    <div class="ticker-track">
+      <span class="ticker-item">AAPL <span>Apple</span></span><span class="ticker-item">MSFT <span>Microsoft</span></span><span class="ticker-item">GOOGL <span>Alphabet</span></span><span class="ticker-item">AMZN <span>Amazon</span></span><span class="ticker-item">NVDA <span>NVIDIA</span></span><span class="ticker-item">META <span>Meta</span></span><span class="ticker-item">TSLA <span>Tesla</span></span><span class="ticker-item">AVGO <span>Broadcom</span></span><span class="ticker-item">ORCL <span>Oracle</span></span><span class="ticker-item">AMD <span>AMD</span></span>
+      <span class="ticker-item">AAPL <span>Apple</span></span><span class="ticker-item">MSFT <span>Microsoft</span></span><span class="ticker-item">GOOGL <span>Alphabet</span></span><span class="ticker-item">AMZN <span>Amazon</span></span><span class="ticker-item">NVDA <span>NVIDIA</span></span><span class="ticker-item">META <span>Meta</span></span><span class="ticker-item">TSLA <span>Tesla</span></span><span class="ticker-item">AVGO <span>Broadcom</span></span><span class="ticker-item">ORCL <span>Oracle</span></span><span class="ticker-item">AMD <span>AMD</span></span>
+    </div>
+  </div>
+
+  <div class="pipeline">
+    <div class="p-step reveal delay-1">
+      <div class="p-num-wrap"><div class="p-circle">01</div></div>
+      <div class="p-body">
+        <div class="p-title">Real-time data collection</div>
+        <div class="p-desc">Stock price data and financial news retrieved from Alpha Vantage and other sources. OHLCV data cleaned and preprocessed to remove noise for higher-quality analysis.</div>
+        <div class="tag-row"><span class="tag">Alpha Vantage</span><span class="tag">OHLCV data</span><span class="tag">2021–2026</span></div>
+      </div>
+    </div>
+    <div class="p-step reveal delay-2">
+      <div class="p-num-wrap"><div class="p-circle">02</div></div>
+      <div class="p-body">
+        <div class="p-title">FinBERT sentiment scoring</div>
+        <div class="p-desc">Financial news headlines scored using FinBERT — a BERT model fine-tuned on financial text. Each article classified as Positive, Negative, or Neutral and aggregated daily per stock.</div>
+        <div class="tag-row"><span class="tag">FinBERT</span><span class="tag">Positive</span><span class="tag red">Negative</span><span class="tag amber">Neutral</span></div>
+      </div>
+    </div>
+    <div class="p-step reveal delay-3">
+      <div class="p-num-wrap"><div class="p-circle">03</div></div>
+      <div class="p-body">
+        <div class="p-title">Feature engineering</div>
+        <div class="p-desc">Technical indicators (RSI, MACD, Bollinger Bands) computed from price data and merged with daily sentiment scores. Features normalised before model training.</div>
+        <div class="tag-row"><span class="tag blue">RSI</span><span class="tag blue">MACD</span><span class="tag blue">Bollinger Bands</span><span class="tag blue">Sentiment score</span></div>
+      </div>
+    </div>
+    <div class="p-step reveal delay-4">
+      <div class="p-num-wrap"><div class="p-circle">04</div></div>
+      <div class="p-body">
+        <div class="p-title">XGBoost model training</div>
+        <div class="p-desc">XGBoost gradient boosting model trained on combined price and sentiment features using chronological splits to prevent data leakage. Generates stock movement predictions and risk assessments.</div>
+        <div class="tag-row"><span class="tag">XGBoost</span><span class="tag">Chronological split</span><span class="tag">Python</span></div>
+      </div>
+    </div>
+    <div class="p-step reveal delay-5">
+      <div class="p-num-wrap"><div class="p-circle">05</div></div>
+      <div class="p-body">
+        <div class="p-title">Platform delivery</div>
+        <div class="p-desc">Prediction results served via FastAPI to a React.js frontend — displayed alongside real-time charts, sentiment gauges, buy/hold/sell recommendations, and risk profiling.</div>
+        <div class="tag-row"><span class="tag">React.js</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">Cloud hosting</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+</script>
+</body>
 </html>
