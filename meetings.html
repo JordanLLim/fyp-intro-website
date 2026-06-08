@@ -137,7 +137,7 @@
 <body>
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="logo.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
+    <img src="logo_cropped.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -171,7 +171,7 @@
         <div class="meeting-num">01</div>
         <div class="meeting-info">
           <div class="meeting-title">Supervisor Meeting 01</div>
-          <div class="meeting-date">// Add date here</div>
+          <div class="meeting-date">5th April 2026</div>
         </div>
         <span class="meeting-badge badge-supervisor">Supervisor</span>
         <div class="meeting-toggle">
@@ -195,11 +195,11 @@
             <div class="minutes-label">Meeting Minutes</div>
             <div class="minutes-block">
               <ul>
-                <li><strong>Project kickoff</strong> — Supervisor introduced the scope and expectations for FYP-26-S2-27.</li>
-                <li><strong>Topic confirmed</strong> — AI stock price prediction using BiLSTM + FinBERT sentiment analysis.</li>
-                <li><strong>Timeline discussed</strong> — Key milestones set: data collection, model training, frontend deployment.</li>
-                <li><strong>Data sources</strong> — Team to evaluate yfinance, Finnhub, Alpha Vantage, NewsAPI, and GDELT.</li>
-                <li><strong>Next steps</strong> — Begin data collection scripts, assign team roles.</li>
+                <li>Members must send their contact details (phone & email) to the group leader for forwarding to the lecturer — deadline: today by lunch.</li>
+                <li>Personal diary submissions are mandatory weekly.</li>
+                <li>Group leader to send phone numbers and email addresses of all members to the lecturer by today's lunch.</li>
+                <li>If absent, members must submit a medical certificate (MC) to the group leader.</li>
+                <li>Propose a minimum of 10 product features for the SGS stock market app (target users: stock market participants).</li>
               </ul>
             </div>
           </div>
@@ -213,7 +213,7 @@
         <div class="meeting-num">02</div>
         <div class="meeting-info">
           <div class="meeting-title">Internal Meeting 01</div>
-          <div class="meeting-date">// Add date here</div>
+          <div class="meeting-date">6th April 2026</div>
         </div>
         <span class="meeting-badge badge-internal">Internal</span>
         <div class="meeting-toggle">
@@ -236,10 +236,49 @@
             <div class="minutes-label">Meeting Minutes</div>
             <div class="minutes-block">
               <ul>
-                <li><strong>Role assignment</strong> — Team roles distributed: Team Leader, Backend, Frontend, Research.</li>
-                <li><strong>Data collection strategy</strong> — Decided to use Python scripts with rate limiting to avoid API bans.</li>
-                <li><strong>Repository setup</strong> — GitHub repo created, branching strategy agreed.</li>
-                <li><strong>Next steps</strong> — Each member to complete data collection scripts for assigned APIs by next meeting.</li>
+                <li>Working methodology: Agile (Scrum).</li>
+                <li>Task management tool: shared Google Sheets spreadsheet.</li>
+                <li>Project website name to be decided by team vote</li>
+                <li>Individual market research tasks were assigned; each member will investigate existing stock prediction software and document their findings.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-card reveal delay-2" data-type="internal">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">02</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Internal Meeting 01</div>
+          <div class="meeting-date">11th April 2026</div>
+        </div>
+        <span class="meeting-badge badge-internal">Internal</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li>Kim Anh to follow up with the supervisor regarding meeting logistics (time change, link, diary template).</li>
+                <li>All members to add feature descriptions with pros and cons before the next meeting.</li>
+                <li>Next meeting date/time to be confirmed pending supervisor's reply.</li>
+                <li>The team agreed to focus on two target user groups: part-time beginner/intermediate investors and low-income fresh graduates seeking risk analysis.</li>
               </ul>
             </div>
           </div>
@@ -253,7 +292,7 @@
         <div class="meeting-num">03</div>
         <div class="meeting-info">
           <div class="meeting-title">Supervisor Meeting 02</div>
-          <div class="meeting-date">// Add date here</div>
+          <div class="meeting-date">19th April 2026</div>
         </div>
         <span class="meeting-badge badge-supervisor">Supervisor</span>
         <div class="meeting-toggle">
@@ -277,10 +316,11 @@
             <div class="minutes-label">Meeting Minutes</div>
             <div class="minutes-block">
               <ul>
-                <li><strong>Progress review</strong> — Data collection pipeline presented: 8,444 articles and 12,540 trading days collected.</li>
-                <li><strong>FinBERT results</strong> — Initial sentiment scoring results discussed: Positive 2,565 / Negative 3,662 / Neutral 1,808.</li>
-                <li><strong>Feedback</strong> — Supervisor noted class imbalance in sentiment labels, recommended investigating oversampling.</li>
-                <li><strong>Next steps</strong> — Proceed to feature engineering and BiLSTM model architecture design.</li>
+                <li>Next meeting with supervisor: 10:00 am on 01/05.</li>
+                <li>Submit PRD documentation before the next meeting.</li>
+                <li>Finalise features, actors, and restructured feature list by this Wednesday (or Tuesday at the earliest).</li>
+                <li>Stock alert scope: monitor SGX stocks first (more data available).</li>
+                <li>Non-functional features include system access control, response time, and cloud hosting.</li>
               </ul>
             </div>
           </div>
@@ -289,6 +329,203 @@
     </div>
 
     <!-- ── ADD MORE MEETINGS BELOW following the same pattern ── -->
+    <!-- ── MEETING 1 ── -->
+    <div class="meeting-card reveal delay-1" data-type="supervisor">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">01</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Supervisor Meeting 01</div>
+          <div class="meeting-date">1st May 2026</div>
+        </div>
+        <span class="meeting-badge badge-supervisor">Supervisor</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Mr Ee Kiam Keong</span>
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li>Address risk materialisation scenarios and mitigation strategies</li>
+                <li>Submit Gantt chart</li>
+                <li>Justify technology choices (e.g. Visual Studio Code, JavaScript) over alternatives</li>
+                <li>Discuss whether to incorporate an LLM for a product feature</li>
+                <li>Remove bullet points from documentation</li>
+                <li>Submit final PRD document to supervisor</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-card reveal delay-2" data-type="internal">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">02</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Internal Meeting 01</div>
+          <div class="meeting-date">5th May 2026</div>
+        </div>
+        <span class="meeting-badge badge-internal">Internal</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li>Kim Anh to follow up with the supervisor regarding meeting logistics (time change, link, diary template).</li>
+                <li>All members to add feature descriptions with pros and cons before the next meeting.</li>
+                <li>Next meeting date/time to be confirmed pending supervisor's reply.</li>
+                <li>The team agreed to focus on two target user groups: part-time beginner/intermediate investors and low-income fresh graduates seeking risk analysis.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-card reveal delay-2" data-type="internal">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">02</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Internal Meeting 01</div>
+          <div class="meeting-date">15th May 2026</div>
+        </div>
+        <span class="meeting-badge badge-internal">Internal</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li>Task allocation after exam  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-card reveal delay-1" data-type="supervisor">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">01</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Supervisor Meeting 01</div>
+          <div class="meeting-date">26th May 2026</div>
+        </div>
+        <span class="meeting-badge badge-supervisor">Supervisor</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Mr Ee Kiam Keong</span>
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li>Progress target: 15% to 20% of total features should be implemented by the time of the assessor presentation. </li>
+                <li>Real-Time Dashboard stock count: importing 5 to 10 stocks is perfectly fine for the mid-term snapshot. </li>
+                <li> Merge PRD and PDD into a single Version 1 Prelim Technical Report; update diagrams without explanation.  (e.g. Visual Studio Code, JavaScript) over alternatives</li>
+                <li>Compile wireframes extracted from the PDD into a standalone Prelim User Guide</li>
+                <li>uncoloured wireframes are acceptable for the interim submission</li>
+                <li> Slides must give the assessor a complete picture of the Week 20 product to pre-empt excessive external suggestions. </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meeting-card reveal delay-2" data-type="internal">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">02</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Internal Meeting 01</div>
+          <div class="meeting-date">27th May 2026</div>
+        </div>
+        <span class="meeting-badge badge-internal">Internal</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li> Task assignment for upcoming documentation submission  </li>
+                <li>Nguy Kim Anh, Kim Bogyeong, Lanice Lam Wen Xin, Jordan Lim Jun Hong showed the completed features.  </li>
+                <li>They also report the unfinished parts and bugs have not solved  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
