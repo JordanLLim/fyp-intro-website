@@ -1,446 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meetings | Rocket Trade</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .filter-row {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meetings | Rocket Trade</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.filter-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 
-    .filter-btn {
-      font-size: 15px;
-      font-weight: 500;
-      padding: 10px 24px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text2);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
+.filter-btn {
+  font-size: 15px; font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--border2); color: var(--text); }
+.filter-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(62,207,142,0.08); }
 
-    .filter-btn:hover {
-      border-color: var(--border2);
-      color: var(--text);
-    }
+.meetings-list { display: flex; flex-direction: column; gap: 1rem; }
 
-    .filter-btn.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(62, 207, 142, 0.08);
-    }
+/* Accordion card */
+.meeting-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.meeting-card:hover { border-color: var(--border2); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+.meeting-card.open { border-color: var(--border2); }
 
-    .meetings-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+.meeting-header {
+  display: grid;
+  grid-template-columns: 60px 1fr auto auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+.meeting-header:hover { background: rgba(255,255,255,0.03); }
 
-    /* Accordion card */
-    .meeting-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
+.meeting-num {
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.5;
+  text-align: center;
+}
 
-    .meeting-card:hover {
-      border-color: var(--border2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    }
+.meeting-info {}
+.meeting-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.meeting-date  { font-size: 14px; color: var(--text3); font-family: var(--mono); }
 
-    .meeting-card.open {
-      border-color: var(--border2);
-    }
+.meeting-badge {
+  font-size: 12px; font-weight: 600;
+  padding: 5px 14px; border-radius: 6px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.badge-supervisor { color: var(--blue); background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25); }
+.badge-internal   { color: var(--accent); background: rgba(62,207,142,0.08); border: 1px solid rgba(62,207,142,0.25); }
 
-    .meeting-header {
-      display: grid;
-      grid-template-columns: 60px 1fr auto auto;
-      gap: 1.25rem;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
-    }
+.meeting-toggle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text3);
+  flex-shrink: 0;
+  transition: transform 0.3s, border-color 0.2s, color 0.2s;
+}
+.meeting-card.open .meeting-toggle { transform: rotate(180deg); border-color: var(--accent); color: var(--accent); }
 
-    .meeting-header:hover {
-      background: rgba(255, 255, 255, 0.03);
-    }
+/* Accordion body */
+.meeting-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.meeting-card.open .meeting-body { max-height: 2000px; }
 
-    .meeting-num {
-      font-family: var(--mono);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.5;
-      text-align: center;
-    }
+.meeting-content {
+  padding: 0 2rem 2rem;
+  border-top: 1px solid var(--border);
+}
 
-    .meeting-info {}
+.minutes-section { margin-top: 1.5rem; }
+.minutes-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
 
-    .meeting-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
+.minutes-block {
+  background: rgba(2,6,23,0.5);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.85;
+}
 
-    .meeting-date {
-      font-size: 14px;
-      color: var(--text3);
-      font-family: var(--mono);
-    }
+.minutes-block ul { padding-left: 1.25rem; }
+.minutes-block li { margin-bottom: 0.5rem; }
+.minutes-block li::marker { color: var(--accent); }
+.minutes-block strong { color: var(--text); font-weight: 600; }
 
-    .meeting-badge {
-      font-size: 12px;
-      font-weight: 600;
-      padding: 5px 14px;
-      border-radius: 6px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
+.attendees-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 1rem;
+}
+.attendee-tag {
+  font-size: 13px;
+  background: rgba(96,165,250,0.08);
+  border: 1px solid rgba(96,165,250,0.2);
+  color: var(--blue);
+  padding: 4px 12px; border-radius: 6px;
+}
 
-    .badge-supervisor {
-      color: var(--blue);
-      background: rgba(96, 165, 250, 0.1);
-      border: 1px solid rgba(96, 165, 250, 0.25);
-    }
+.hidden { display: none !important; }
 
-    .badge-internal {
-      color: var(--accent);
-      background: rgba(62, 207, 142, 0.08);
-      border: 1px solid rgba(62, 207, 142, 0.25);
-    }
-
-    .meeting-toggle {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text3);
-      flex-shrink: 0;
-      transition: transform 0.3s, border-color 0.2s, color 0.2s;
-    }
-
-    .meeting-card.open .meeting-toggle {
-      transform: rotate(180deg);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Accordion body */
-    .meeting-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .meeting-card.open .meeting-body {
-      max-height: 2000px;
-    }
-
-    .meeting-content {
-      padding: 0 2rem 2rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .minutes-section {
-      margin-top: 1.5rem;
-    }
-
-    .minutes-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .minutes-block {
-      background: rgba(2, 6, 23, 0.5);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      font-size: 15px;
-      color: var(--text2);
-      line-height: 1.85;
-    }
-
-    .minutes-block ul {
-      padding-left: 1.25rem;
-    }
-
-    .minutes-block li {
-      margin-bottom: 0.5rem;
-    }
-
-    .minutes-block li::marker {
-      color: var(--accent);
-    }
-
-    .minutes-block strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .attendees-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 1rem;
-    }
-
-    .attendee-tag {
-      font-size: 13px;
-      background: rgba(96, 165, 250, 0.08);
-      border: 1px solid rgba(96, 165, 250, 0.2);
-      color: var(--blue);
-      padding: 4px 12px;
-      border-radius: 6px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 640px) {
-      .meeting-header {
-        grid-template-columns: 48px 1fr auto;
-      }
-
-      .meeting-badge {
-        display: none;
-      }
-
-      .meeting-content {
-        padding: 0 1.25rem 1.5rem;
-      }
-    }
-  </style>
+@media (max-width: 640px) {
+  .meeting-header { grid-template-columns: 48px 1fr auto; }
+  .meeting-badge { display: none; }
+  .meeting-content { padding: 0 1.25rem 1.5rem; }
+}
+</style>
 </head>
-
 <body>
-  <nav>
-    <a class="nav-logo" href="index.html">
-      <img src="logo_cropped.png" alt="Rocket Trade" style="width:auto;object-fit:contain;" />
-      <!-- <span class="nav-logo-text">Rocket Trade</span> -->
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="demo.html">Demo</a></li>
-      <li><a href="meetings.html" class="active">Meetings</a></li>
-      <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz?usp=drive_link"
-          target="_blank">Docs ↗</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="demo.html">Demo</a></li>
+    <li><a href="meetings.html" class="active">Meetings</a></li>
+    <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz" target="_blank">Docs ↗</a></li>
+  </ul>
+</nav>
 
-  <div class="page">
-    <div class="page-header reveal">
-      <div class="page-eyebrow">Project Log</div>
-      <h1 class="page-title">Meetings</h1>
-      <p class="page-subtitle">Click on any meeting to read the full minutes and discussion notes.</p>
-    </div>
-
-    <div class="filter-row reveal">
-      <button class="filter-btn active" onclick="filterMeetings('all', this)">All Meetings</button>
-      <button class="filter-btn" onclick="filterMeetings('supervisor', this)">Supervisor Meeting</button>
-      <button class="filter-btn" onclick="filterMeetings('internal', this)">Internal Meeting</button>
-    </div>
-
-    <div class="meetings-list" id="meetingsList">
-
-      <!-- ── MEETING 1 ── -->
-      <div class="meeting-card reveal delay-1" data-type="supervisor">
-        <div class="meeting-header" onclick="toggleMeeting(this)">
-          <div class="meeting-num">01</div>
-          <div class="meeting-info">
-            <div class="meeting-title">Supervisor Meeting 01</div>
-            <div class="meeting-date">// Add date here</div>
-          </div>
-          <span class="meeting-badge badge-supervisor">Supervisor</span>
-          <div class="meeting-toggle">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        </div>
-        <div class="meeting-body">
-          <div class="meeting-content">
-            <div class="minutes-section">
-              <div class="minutes-label">Attendees</div>
-              <div class="attendees-row">
-                <span class="attendee-tag">Mr Ee Kiam Keong</span>
-                <span class="attendee-tag">Nguy Kim Anh</span>
-                <span class="attendee-tag">Jordan Lim</span>
-                <span class="attendee-tag">Kim Bogyeong</span>
-                <span class="attendee-tag">Lanice Lam</span>
-                <span class="attendee-tag">Lim Ying Xin</span>
-              </div>
-            </div>
-            <div class="minutes-section">
-              <div class="minutes-label">Meeting Minutes</div>
-              <div class="minutes-block">
-                <ul>
-                  <li><strong>Project kickoff</strong> — Supervisor introduced the scope and expectations for
-                    FYP-26-S2-27.</li>
-                  <li><strong>Topic confirmed</strong> — AI stock price prediction using BiLSTM + FinBERT sentiment
-                    analysis.</li>
-                  <li><strong>Timeline discussed</strong> — Key milestones set: data collection, model training,
-                    frontend deployment.</li>
-                  <li><strong>Data sources</strong> — Team to evaluate yfinance, Finnhub, Alpha Vantage, NewsAPI, and
-                    GDELT.</li>
-                  <li><strong>Next steps</strong> — Begin data collection scripts, assign team roles.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── MEETING 2 ── -->
-      <div class="meeting-card reveal delay-2" data-type="internal">
-        <div class="meeting-header" onclick="toggleMeeting(this)">
-          <div class="meeting-num">02</div>
-          <div class="meeting-info">
-            <div class="meeting-title">Internal Meeting 01</div>
-            <div class="meeting-date">// Add date here</div>
-          </div>
-          <span class="meeting-badge badge-internal">Internal</span>
-          <div class="meeting-toggle">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        </div>
-        <div class="meeting-body">
-          <div class="meeting-content">
-            <div class="minutes-section">
-              <div class="minutes-label">Attendees</div>
-              <div class="attendees-row">
-                <span class="attendee-tag">Nguy Kim Anh</span>
-                <span class="attendee-tag">Jordan Lim</span>
-                <span class="attendee-tag">Kim Bogyeong</span>
-                <span class="attendee-tag">Lanice Lam</span>
-                <span class="attendee-tag">Lim Ying Xin</span>
-              </div>
-            </div>
-            <div class="minutes-section">
-              <div class="minutes-label">Meeting Minutes</div>
-              <div class="minutes-block">
-                <ul>
-                  <li><strong>Role assignment</strong> — Team roles distributed: Team Leader, Backend, Frontend,
-                    Research.</li>
-                  <li><strong>Data collection strategy</strong> — Decided to use Python scripts with rate limiting to
-                    avoid API bans.</li>
-                  <li><strong>Repository setup</strong> — GitHub repo created, branching strategy agreed.</li>
-                  <li><strong>Next steps</strong> — Each member to complete data collection scripts for assigned APIs by
-                    next meeting.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── MEETING 3 ── -->
-      <div class="meeting-card reveal delay-3" data-type="supervisor">
-        <div class="meeting-header" onclick="toggleMeeting(this)">
-          <div class="meeting-num">03</div>
-          <div class="meeting-info">
-            <div class="meeting-title">Supervisor Meeting 02</div>
-            <div class="meeting-date">// Add date here</div>
-          </div>
-          <span class="meeting-badge badge-supervisor">Supervisor</span>
-          <div class="meeting-toggle">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </div>
-        </div>
-        <div class="meeting-body">
-          <div class="meeting-content">
-            <div class="minutes-section">
-              <div class="minutes-label">Attendees</div>
-              <div class="attendees-row">
-                <span class="attendee-tag">Mr Ee Kiam Keong</span>
-                <span class="attendee-tag">Nguy Kim Anh</span>
-                <span class="attendee-tag">Jordan Lim</span>
-                <span class="attendee-tag">Kim Bogyeong</span>
-                <span class="attendee-tag">Lanice Lam</span>
-                <span class="attendee-tag">Lim Ying Xin</span>
-              </div>
-            </div>
-            <div class="minutes-section">
-              <div class="minutes-label">Meeting Minutes</div>
-              <div class="minutes-block">
-                <ul>
-                  <li><strong>Progress review</strong> — Data collection pipeline presented: 8,444 articles and 12,540
-                    trading days collected.</li>
-                  <li><strong>FinBERT results</strong> — Initial sentiment scoring results discussed: Positive 2,565 /
-                    Negative 3,662 / Neutral 1,808.</li>
-                  <li><strong>Feedback</strong> — Supervisor noted class imbalance in sentiment labels, recommended
-                    investigating oversampling.</li>
-                  <li><strong>Next steps</strong> — Proceed to feature engineering and BiLSTM model architecture design.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── ADD MORE MEETINGS BELOW following the same pattern ── -->
-
-    </div>
+<div class="page">
+  <div class="page-header reveal">
+    <div class="page-eyebrow">Project Log</div>
+    <h1 class="page-title">Meetings</h1>
+    <p class="page-subtitle">Click on any meeting to read the full minutes and discussion notes.</p>
   </div>
 
-  <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+  <div class="filter-row reveal">
+    <button class="filter-btn active" onclick="filterMeetings('all', this)">All Meetings</button>
+    <button class="filter-btn" onclick="filterMeetings('supervisor', this)">Supervisor Meeting</button>
+    <button class="filter-btn" onclick="filterMeetings('internal', this)">Internal Meeting</button>
+  </div>
 
-  <script>
-    // Accordion toggle
-    function toggleMeeting(header) {
-      const card = header.closest('.meeting-card');
-      card.classList.toggle('open');
+  <div class="meetings-list" id="meetingsList">
+
+    <!-- ── MEETING 1 ── -->
+    <div class="meeting-card reveal delay-1" data-type="supervisor">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">01</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Supervisor Meeting 01</div>
+          <div class="meeting-date">// Add date here</div>
+        </div>
+        <span class="meeting-badge badge-supervisor">Supervisor</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Mr Ee Kiam Keong</span>
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li><strong>Project kickoff</strong> — Supervisor introduced the scope and expectations for FYP-26-S2-27.</li>
+                <li><strong>Topic confirmed</strong> — AI stock price prediction using BiLSTM + FinBERT sentiment analysis.</li>
+                <li><strong>Timeline discussed</strong> — Key milestones set: data collection, model training, frontend deployment.</li>
+                <li><strong>Data sources</strong> — Team to evaluate yfinance, Finnhub, Alpha Vantage, NewsAPI, and GDELT.</li>
+                <li><strong>Next steps</strong> — Begin data collection scripts, assign team roles.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MEETING 2 ── -->
+    <div class="meeting-card reveal delay-2" data-type="internal">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">02</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Internal Meeting 01</div>
+          <div class="meeting-date">// Add date here</div>
+        </div>
+        <span class="meeting-badge badge-internal">Internal</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li><strong>Role assignment</strong> — Team roles distributed: Team Leader, Backend, Frontend, Research.</li>
+                <li><strong>Data collection strategy</strong> — Decided to use Python scripts with rate limiting to avoid API bans.</li>
+                <li><strong>Repository setup</strong> — GitHub repo created, branching strategy agreed.</li>
+                <li><strong>Next steps</strong> — Each member to complete data collection scripts for assigned APIs by next meeting.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MEETING 3 ── -->
+    <div class="meeting-card reveal delay-3" data-type="supervisor">
+      <div class="meeting-header" onclick="toggleMeeting(this)">
+        <div class="meeting-num">03</div>
+        <div class="meeting-info">
+          <div class="meeting-title">Supervisor Meeting 02</div>
+          <div class="meeting-date">// Add date here</div>
+        </div>
+        <span class="meeting-badge badge-supervisor">Supervisor</span>
+        <div class="meeting-toggle">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+      <div class="meeting-body">
+        <div class="meeting-content">
+          <div class="minutes-section">
+            <div class="minutes-label">Attendees</div>
+            <div class="attendees-row">
+              <span class="attendee-tag">Mr Ee Kiam Keong</span>
+              <span class="attendee-tag">Nguy Kim Anh</span>
+              <span class="attendee-tag">Jordan Lim</span>
+              <span class="attendee-tag">Kim Bogyeong</span>
+              <span class="attendee-tag">Lanice Lam</span>
+              <span class="attendee-tag">Lim Ying Xin</span>
+            </div>
+          </div>
+          <div class="minutes-section">
+            <div class="minutes-label">Meeting Minutes</div>
+            <div class="minutes-block">
+              <ul>
+                <li><strong>Progress review</strong> — Data collection pipeline presented: 8,444 articles and 12,540 trading days collected.</li>
+                <li><strong>FinBERT results</strong> — Initial sentiment scoring results discussed: Positive 2,565 / Negative 3,662 / Neutral 1,808.</li>
+                <li><strong>Feedback</strong> — Supervisor noted class imbalance in sentiment labels, recommended investigating oversampling.</li>
+                <li><strong>Next steps</strong> — Proceed to feature engineering and BiLSTM model architecture design.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ADD MORE MEETINGS BELOW following the same pattern ── -->
+
+  </div>
+</div>
+
+<footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+
+<script>
+// Accordion toggle
+function toggleMeeting(header) {
+  const card = header.closest('.meeting-card');
+  card.classList.toggle('open');
+}
+
+// Filter
+function filterMeetings(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.meeting-card').forEach(card => {
+    if (type === 'all' || card.dataset.type === type) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
     }
+  });
+}
 
-    // Filter
-    function filterMeetings(type, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.meeting-card').forEach(card => {
-        if (type === 'all' || card.dataset.type === type) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    }
-
-    // Scroll reveal
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
-  </script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+</script>
 </body>
-
 </html>
