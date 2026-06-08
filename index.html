@@ -1,99 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Home | Rocket Trade</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
-<style>
-.hero { min-height: calc(100vh - var(--nav-h)); display: flex; flex-direction: column; justify-content: center; padding-top: 2rem; padding-bottom: 4rem; }
-.hero-tag { display: inline-block; font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(62,207,142,0.3); padding: 6px 16px; border-radius: 3px; margin-bottom: 2rem; text-transform: uppercase; }
-.hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.035em; margin-bottom: 1.5rem; }
-.hero h1 .hi { color: var(--accent); }
-.hero-sub { font-size: 1.2rem; color: var(--text2); max-width: 580px; line-height: 1.85; margin-bottom: 3rem; }
-.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
-.btn-primary { display: inline-block; background: var(--accent); color: #020617; font-family: var(--mono); font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-decoration: none; padding: 14px 28px; border-radius: 4px; transition: opacity 0.2s, transform 0.2s; }
-.btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
-.btn-outline { display: inline-block; border: 1px solid var(--border2); color: var(--text2); font-family: var(--mono); font-size: 14px; letter-spacing: 0.06em; text-decoration: none; padding: 14px 28px; border-radius: 4px; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-.hero-meta { display: flex; gap: 3rem; flex-wrap: wrap; padding-top: 2rem; border-top: 1px solid var(--border); }
-.meta-item { display: flex; flex-direction: column; gap: 4px; }
-.meta-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; }
-.meta-value { font-size: 16px; color: var(--text); font-weight: 500; }
-.stats-band { margin-top: 4rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-.stat-cell { background: var(--surface); padding: 1.75rem 1.5rem; transition: background 0.2s; }
-.stat-cell:hover { background: var(--surface2); }
-.stat-num { font-family: var(--mono); font-size: 2.2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
-.stat-lbl { font-size: 14px; color: var(--text2); line-height: 1.4; }
-.overview { margin-top: 5rem; }
-.overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.overview-grid p { font-size: 15px; color: var(--text2); line-height: 1.85; }
-@media (max-width: 768px) { .hero { min-height: auto; } .stats-band { grid-template-columns: 1fr 1fr; } .overview-grid { grid-template-columns: 1fr; } }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home | Rocket Trade</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(62, 207, 142, 0.3);
+      padding: 6px 16px;
+      border-radius: 3px;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .hi {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--text2);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #020617;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--border2);
+      color: var(--text2);
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text3);
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .stats-band {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .stat-cell {
+      background: var(--surface);
+      padding: 1.75rem 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .stat-cell:hover {
+      background: var(--surface2);
+    }
+
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-lbl {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.4;
+    }
+
+    .overview {
+      margin-top: 5rem;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .overview-grid p {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.85;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .stats-band {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav>
-  <a class="nav-logo" href="index.html">
-    <img src="logo.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="features.html">Features</a></li>
-    <li><a href="team.html">Team</a></li>
-    <li><a href="demo.html">Demo</a></li>
-    <li><a href="meetings.html">Meetings</a></li>
-    <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz" target="_blank">Docs ↗</a></li>
-  </ul>
-</nav>
-<div class="page">
-  <div class="hero">
-    <div class="hero-tag anim-fade-in">Final Year Project · SIM · 2026</div>
-    <h1 class="anim-fade-up anim-d1">Webservice for<br /><span class="hi">Stock Market</span><br />Prediction</h1>
-    <p class="hero-sub anim-fade-up anim-d2">An AI-powered web platform combining XGBoost machine learning and FinBERT sentiment analysis with a full-featured trading environment — real-time dashboards, simulated portfolios, expert insights, and community forums.</p>
-    <div class="hero-cta anim-fade-up anim-d3">
-      <a href="about.html" class="btn-primary">Learn More →</a>
-      <a href="demo.html" class="btn-outline">View Demo</a>
-    </div>
-    <div class="hero-meta anim-fade-up anim-d4">
-      <div class="meta-item"><span class="meta-label">Project ID</span><span class="meta-value">FYP-26-S2-27</span></div>
-      <div class="meta-item"><span class="meta-label">Institution</span><span class="meta-value">Singapore Institute of Management</span></div>
-      <div class="meta-item"><span class="meta-label">Domain</span><span class="meta-value">ML · NLP · FinTech</span></div>
-      <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2025 / 2026</span></div>
-    </div>
-    <div class="stats-band anim-fade-up anim-d5">
-      <div class="stat-cell"><div class="stat-num">10</div><div class="stat-lbl">NASDAQ tech stocks tracked</div></div>
-      <div class="stat-cell"><div class="stat-num">5</div><div class="stat-lbl">User roles supported</div></div>
-      <div class="stat-cell"><div class="stat-num">2021–26</div><div class="stat-lbl">Historical data range</div></div>
-      <div class="stat-cell"><div class="stat-num">15+</div><div class="stat-lbl">Core platform features</div></div>
-    </div>
-  </div>
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="logo_cropped.png" alt="Rocket Trade Logo" style="width:auto;max-width:160px;object-fit:contain;" />
+      <!-- <span class="nav-logo-text">Rocket Trade</span> -->
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="demo.html">Demo</a></li>
+      <li><a href="meetings.html">Meetings</a></li>
+      <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz?usp=drive_link"
+          target="_blank">Docs ↗</a></li>
+    </ul>
+  </nav>
 
-  <div class="ticker-wrap reveal">
-    <div class="ticker-track">
-      <span class="ticker-item">AAPL <span>Apple</span></span><span class="ticker-item">MSFT <span>Microsoft</span></span><span class="ticker-item">GOOGL <span>Alphabet</span></span><span class="ticker-item">AMZN <span>Amazon</span></span><span class="ticker-item">NVDA <span>NVIDIA</span></span><span class="ticker-item">META <span>Meta</span></span><span class="ticker-item">TSLA <span>Tesla</span></span><span class="ticker-item">AVGO <span>Broadcom</span></span><span class="ticker-item">ORCL <span>Oracle</span></span><span class="ticker-item">AMD <span>AMD</span></span>
-      <span class="ticker-item">AAPL <span>Apple</span></span><span class="ticker-item">MSFT <span>Microsoft</span></span><span class="ticker-item">GOOGL <span>Alphabet</span></span><span class="ticker-item">AMZN <span>Amazon</span></span><span class="ticker-item">NVDA <span>NVIDIA</span></span><span class="ticker-item">META <span>Meta</span></span><span class="ticker-item">TSLA <span>Tesla</span></span><span class="ticker-item">AVGO <span>Broadcom</span></span><span class="ticker-item">ORCL <span>Oracle</span></span><span class="ticker-item">AMD <span>AMD</span></span>
+  <div class="page">
+    <div class="hero">
+      <div class="hero-tag anim-fade-in">Final Year Project · SIM · 2026</div>
+      <h1 class="anim-fade-up anim-d1">Rocket Trade<br /><span class="hi">Returns like Rocket</span><br /></h1>
+      <p class="hero-sub anim-fade-up anim-d2">Rocket Trade empowers investors with AI-powered stock predictions,
+        real-time market insights, portfolio tracking, educational resources, and a thriving investment community—all in
+        one platform.</p>
+      <div class="hero-cta anim-fade-up anim-d3">
+        <a href="about.html" class="btn-primary">Learn More →</a>
+        <a href="demo.html" class="btn-outline">View Demo</a>
+      </div>
+      <div class="hero-meta anim-fade-up anim-d4">
+        <div class="meta-item"><span class="meta-label">Project ID</span><span class="meta-value">FYP-26-S2-27</span>
+        </div>
+        <div class="meta-item"><span class="meta-label">Institution</span><span class="meta-value">University of
+            Wollongong</span></div>
+        <div class="meta-item"><span class="meta-label">Domain</span><span class="meta-value">ML · NLP · FinTech</span>
+        </div>
+        <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2026</span></div>
+      </div>
+      <div class="stats-band anim-fade-up anim-d5">
+        <div class="stat-cell">
+          <div class="stat-num">10</div>
+          <div class="stat-lbl">Large-cap tech stocks</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">8,444</div>
+          <div class="stat-lbl">News articles scored</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">12,540</div>
+          <div class="stat-lbl">Trading days in dataset</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">5+</div>
+          <div class="stat-lbl">Data sources integrated</div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="overview">
-    <div class="sec-label reveal">Overview</div>
-    <h2 class="sec-title reveal delay-1">What we built</h2>
-    <p class="sec-desc reveal delay-2">A full-stack stock market prediction web platform supporting multiple user roles, from beginner investors to professional consultants and system administrators.</p>
-    <div class="overview-grid">
-      <div class="card reveal delay-1"><div class="card-label">Problem</div><p>Individual investors face information overload and struggle to interpret real-time market data, news sentiment, and technical indicators simultaneously — leading to uninformed trading decisions.</p></div>
-      <div class="card reveal delay-2"><div class="card-label">Solution</div><p>An intelligent web platform that fuses XGBoost + FinBERT AI predictions with real-time dashboards, simulated portfolios, expert consultation, and a community forum — all in one accessible interface.</p></div>
-      <div class="card reveal delay-3"><div class="card-label">Who It's For</div><p>Beginner to experienced investors (primarily the 20–30 age group), financial consultants who want to share curated portfolios, and platform administrators managing user access and content.</p></div>
-      <div class="card reveal delay-4"><div class="card-label">Tech Stack</div><p>React.js frontend · FastAPI backend · MySQL database · XGBoost + FinBERT ML pipeline · Alpha Vantage API · Cloud hosting — built with a three-tier architecture for scalability.</p></div>
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <span class="ticker-item">AAPL <span>Apple</span></span><span class="ticker-item">MSFT
+          <span>Microsoft</span></span><span class="ticker-item">GOOGL <span>Alphabet</span></span><span
+          class="ticker-item">AMZN <span>Amazon</span></span><span class="ticker-item">NVDA
+          <span>NVIDIA</span></span><span class="ticker-item">META <span>Meta</span></span><span
+          class="ticker-item">TSLA <span>Tesla</span></span><span class="ticker-item">AVGO
+          <span>Broadcom</span></span><span class="ticker-item">ORCL <span>Oracle</span></span><span
+          class="ticker-item">AMD <span>AMD</span></span>
+        <span class="ticker-item">AAPL <span>Apple</span></span><span class="ticker-item">MSFT
+          <span>Microsoft</span></span><span class="ticker-item">GOOGL <span>Alphabet</span></span><span
+          class="ticker-item">AMZN <span>Amazon</span></span><span class="ticker-item">NVDA
+          <span>NVIDIA</span></span><span class="ticker-item">META <span>Meta</span></span><span
+          class="ticker-item">TSLA <span>Tesla</span></span><span class="ticker-item">AVGO
+          <span>Broadcom</span></span><span class="ticker-item">ORCL <span>Oracle</span></span><span
+          class="ticker-item">AMD <span>AMD</span></span>
+      </div>
+    </div>
+
+    <div class="overview">
+      <div class="sec-label">Overview</div>
+      <h2 class="sec-title">What we built</h2>
+      <p class="sec-desc">An end-to-end prediction system bridging financial data engineering, deep learning, and a live
+        web interface.</p>
+      <div class="overview-grid">
+        <div class="card anim-fade-up anim-d1">
+          <div class="card-label">Problem</div>
+          <p>Traditional price models ignore news. Financial sentiment carries real signal. It can bring earnings
+            surprises, regulatory changes, and market narratives all move stocks in ways that historical prices alone
+            cannot predict.</p>
+        </div>
+        <div class="card anim-fade-up anim-d2">
+          <div class="card-label">Solution</div>
+          <p>A hybrid XGBoost + FinBERT pipeline that fuses OHLCV technical features with daily sentiment scores to
+            produce next-day UP / DOWN directional forecasts per stock.</p>
+        </div>
+        <div class="card anim-fade-up anim-d3">
+          <div class="card-label">Data</div>
+          <p>Over 8,400 financial news articles and 12,500 trading days across 10 large-cap NASDAQ tech stocks — sourced
+            from five APIs including yfinance, Finnhub, and NewsAPI.</p>
+        </div>
+        <div class="card anim-fade-up anim-d4">
+          <div class="card-label">Outcome</div>
+          <p>A fully deployed web application with live prediction, a real-time sentiment gauge, and a reproducible
+            Colab training pipeline demonstrating research rigour in a real financial domain.</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
-<script>
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
-</script>
+  <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
 </body>
+
 </html>

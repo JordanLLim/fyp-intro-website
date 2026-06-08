@@ -1,333 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Documentation | FYP-26-S2-27</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
-<style>
-.doc-layout {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 3rem;
-  align-items: start;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation | FYP-26-S2-27</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
 
-.doc-sidebar {
-  position: sticky;
-  top: 84px;
-}
+    .doc-sidebar {
+      position: sticky;
+      top: 84px;
+    }
 
-.sidebar-section { margin-bottom: 1.5rem; }
+    .sidebar-section {
+      margin-bottom: 1.5rem;
+    }
 
-.sidebar-label {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--text2);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
+    .sidebar-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text2);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
 
-.sidebar-links { display: flex; flex-direction: column; gap: 2px; }
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-.sidebar-links a {
-  font-size: 13px;
-  color: var(--text2);
-  text-decoration: none;
-  padding: 4px 8px;
-  border-radius: 2px;
-  transition: color 0.15s, background 0.15s;
-}
+    .sidebar-links a {
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 2px;
+      transition: color 0.15s, background 0.15s;
+    }
 
-.sidebar-links a:hover {
-  color: var(--accent);
-  background: var(--accent-dim);
-}
+    .sidebar-links a:hover {
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
 
-.doc-content section {
-  margin-bottom: 3rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border);
-}
+    .doc-content section {
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
 
-.doc-content section:last-child { border-bottom: none; }
+    .doc-content section:last-child {
+      border-bottom: none;
+    }
 
-.doc-h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.015em;
-  margin-bottom: 0.75rem;
-  margin-top: 0.25rem;
-}
+    .doc-h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      margin-bottom: 0.75rem;
+      margin-top: 0.25rem;
+    }
 
-.doc-h3 {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  margin: 1.25rem 0 0.4rem;
-}
+    .doc-h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 1.25rem 0 0.4rem;
+    }
 
-.doc-p {
-  font-size: 14px;
-  color: var(--text2);
-  line-height: 1.8;
-  margin-bottom: 0.75rem;
-}
+    .doc-p {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
 
-.code-block {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1rem 1.25rem;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text2);
-  line-height: 1.9;
-  margin: 0.75rem 0;
-  overflow-x: auto;
-}
+    .code-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text2);
+      line-height: 1.9;
+      margin: 0.75rem 0;
+      overflow-x: auto;
+    }
 
-.code-block .hl { color: var(--accent); }
-.code-block .hl2 { color: var(--blue); }
-.code-block .hl3 { color: var(--amber); }
-.code-block .comment { color: var(--text2); }
+    .code-block .hl {
+      color: var(--accent);
+    }
 
-.doc-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  margin: 0.75rem 0;
-}
+    .code-block .hl2 {
+      color: var(--blue);
+    }
 
-.doc-table th {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--text2);
-  text-transform: uppercase;
-  text-align: left;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--border2);
-}
+    .code-block .hl3 {
+      color: var(--amber);
+    }
 
-.doc-table td {
-  padding: 8px 12px;
-  color: var(--text2);
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-}
+    .code-block .comment {
+      color: var(--text2);
+    }
 
-.doc-table td:first-child {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--accent);
-  white-space: nowrap;
-}
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 0.75rem 0;
+    }
 
-.doc-table tr:last-child td { border-bottom: none; }
+    .doc-table th {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--text2);
+      text-transform: uppercase;
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border2);
+    }
 
-@media (max-width: 768px) {
-  .doc-layout { grid-template-columns: 1fr; }
-  .doc-sidebar { position: static; display: none; }
-}
-</style>
+    .doc-table td {
+      padding: 8px 12px;
+      color: var(--text2);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .doc-table td:first-child {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .doc-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .doc-sidebar {
+        position: static;
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav>
-  <a class="nav-logo" href="index.html">
-    <img src="logo.png" alt="Rocket Trade Logo" style="height:44px;width:auto;max-width:160px;object-fit:contain;" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="features.html">Features</a></li>
-    <li><a href="team.html">Team</a></li>
-    <li><a href="demo.html">Demo</a></li>
-    <li><a href="meetings.html">Meetings</a></li>
-    <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz" target="_blank">Docs ↗</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="logo.png" alt="Rocket Trade Logo" style="width:auto;max-width:160px;object-fit:contain;" />
+      <span class="nav-logo-text">Rocket Trade</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="demo.html">Demo</a></li>
+      <li><a href="meetings.html">Meetings</a></li>
+      <li><a href="https://drive.google.com/drive/folders/1LA7Z7BtQyMVKNv80Fec3W3X-s4s8r14I?usp=drive_link"
+          target="_blank">Docs ↗</a></li>
+    </ul>
+  </nav>
 
-<div class="page">
-  <div class="page-header">
-    <div class="page-eyebrow">Documentation</div>
-    <h1 class="page-title">Technical Reference</h1>
-    <p class="page-subtitle">System architecture, data sources, model specifications, and setup instructions for the FYP-26-S2-27 prediction pipeline.</p>
-  </div>
-
-  <div class="doc-layout">
-
-    <!-- Sidebar -->
-    <div class="doc-sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-label">Overview</div>
-        <div class="sidebar-links">
-          <a href="#architecture">Architecture</a>
-          <a href="#dataset">Dataset</a>
-        </div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Models</div>
-        <div class="sidebar-links">
-          <a href="#finbert">FinBERT</a>
-          <a href="#bilstm">BiLSTM</a>
-        </div>
-      </div>
-      <div class="sidebar-section">
-        <div class="sidebar-label">Application</div>
-        <div class="sidebar-links">
-          <a href="#api">FastAPI endpoints</a>
-          <a href="#setup">Setup &amp; run</a>
-        </div>
-      </div>
+  <div class="page">
+    <div class="page-header">
+      <div class="page-eyebrow">Documentation</div>
+      <h1 class="page-title">Technical Reference</h1>
+      <p class="page-subtitle">System architecture, data sources, model specifications, and setup instructions for the
+        FYP-26-S2-27 prediction pipeline.</p>
     </div>
 
-    <!-- Content -->
-    <div class="doc-content">
+    <div class="doc-layout">
 
-      <section id="architecture">
-        <div class="sec-label">01</div>
-        <h2 class="doc-h2">System Architecture</h2>
-        <p class="doc-p">The system is divided into three layers: a data pipeline (Python scripts run on Google Colab), a model serving layer (FastAPI on OCI Cloud), and a web frontend (React + Vite).</p>
-        <div class="code-block">
-          <span class="comment"># Directory structure</span><br/>
-          fyp-26-s2-27/<br/>
-          ├── <span class="hl2">data_collection/</span> &nbsp;&nbsp;&nbsp;<span class="comment"># API scrapers</span><br/>
-          ├── <span class="hl2">preprocessing/</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Normalisation scripts</span><br/>
-          ├── <span class="hl2">sentiment/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># FinBERT scoring</span><br/>
-          ├── <span class="hl2">model/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># BiLSTM training</span><br/>
-          ├── <span class="hl2">backend/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># FastAPI server</span><br/>
-          └── <span class="hl2">frontend/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># React + Vite app</span>
+      <!-- Sidebar -->
+      <div class="doc-sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-label">Overview</div>
+          <div class="sidebar-links">
+            <a href="#architecture">Architecture</a>
+            <a href="#dataset">Dataset</a>
+          </div>
         </div>
-      </section>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Models</div>
+          <div class="sidebar-links">
+            <a href="#finbert">FinBERT</a>
+            <a href="#bilstm">BiLSTM</a>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">Application</div>
+          <div class="sidebar-links">
+            <a href="#api">FastAPI endpoints</a>
+            <a href="#setup">Setup &amp; run</a>
+          </div>
+        </div>
+      </div>
 
-      <section id="dataset">
-        <div class="sec-label">02</div>
-        <h2 class="doc-h2">Dataset</h2>
-        <p class="doc-p">Data collected from five sources covering the period January 2020 to December 2024.</p>
-        <table class="doc-table">
-          <thead>
-            <tr>
-              <th>Source</th><th>Data type</th><th>Records</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>yfinance</td><td>OHLCV daily price data</td><td>12,540 trading days</td></tr>
-            <tr><td>Alpha Vantage</td><td>News headlines + sentiment labels</td><td>~1,040 records</td></tr>
-            <tr><td>NewsAPI</td><td>Financial news articles</td><td>Included in 8,444</td></tr>
-            <tr><td>GDELT</td><td>Global news events &amp; tone</td><td>Included in 8,444</td></tr>
-            <tr><td>Finnhub</td><td>Company news &amp; earnings</td><td>Included in 8,444</td></tr>
-          </tbody>
-        </table>
-        <div class="tag-row" style="margin-top:1rem">
-          <span class="tag">10 stocks</span>
-          <span class="tag">2020–2024</span>
-          <span class="tag">8,444 articles</span>
-          <span class="tag">12,540 trading days</span>
-        </div>
-      </section>
+      <!-- Content -->
+      <div class="doc-content">
 
-      <section id="finbert">
-        <div class="sec-label">03</div>
-        <h2 class="doc-h2">FinBERT Sentiment Model</h2>
-        <p class="doc-p">Base model: <code style="font-family:var(--mono);font-size:12px;color:var(--accent)">yiyanghkust/finbert-tone</code> — a BERT model pre-trained on financial text and fine-tuned for tone classification.</p>
-        <h3 class="doc-h3">Output labels</h3>
-        <table class="doc-table">
-          <thead><tr><th>Label</th><th>Count</th><th>Description</th></tr></thead>
-          <tbody>
-            <tr><td>positive</td><td>2,565</td><td>Bullish or favourable news sentiment</td></tr>
-            <tr><td>negative</td><td>3,662</td><td>Bearish, risk, or unfavourable sentiment</td></tr>
-            <tr><td>neutral</td><td>1,808</td><td>Factual reporting, no directional bias</td></tr>
-          </tbody>
-        </table>
-        <h3 class="doc-h3">Daily aggregation</h3>
-        <div class="code-block">
-          <span class="comment"># Aggregate per stock per day</span><br/>
-          daily_sentiment = df.groupby([<span class="hl3">'ticker'</span>, <span class="hl3">'date'</span>]).agg({<br/>
-          &nbsp;&nbsp;<span class="hl3">'score'</span>: <span class="hl">'mean'</span>,<br/>
-          &nbsp;&nbsp;<span class="hl3">'label'</span>: <span class="hl">lambda</span> x: x.value_counts().idxmax()<br/>
-          }).reset_index()
-        </div>
-      </section>
+        <section id="architecture">
+          <div class="sec-label">01</div>
+          <h2 class="doc-h2">System Architecture</h2>
+          <p class="doc-p">The system is divided into three layers: a data pipeline (Python scripts run on Google
+            Colab), a model serving layer (FastAPI on OCI Cloud), and a web frontend (React + Vite).</p>
+          <div class="code-block">
+            <span class="comment"># Directory structure</span><br />
+            fyp-26-s2-27/<br />
+            ├── <span class="hl2">data_collection/</span> &nbsp;&nbsp;&nbsp;<span class="comment"># API
+              scrapers</span><br />
+            ├── <span class="hl2">preprocessing/</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Normalisation
+              scripts</span><br />
+            ├── <span class="hl2">sentiment/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+              class="comment"># FinBERT scoring</span><br />
+            ├── <span class="hl2">model/</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># BiLSTM
+              training</span><br />
+            ├── <span class="hl2">backend/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+              class="comment"># FastAPI server</span><br />
+            └── <span class="hl2">frontend/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+              class="comment"># React + Vite app</span>
+          </div>
+        </section>
 
-      <section id="bilstm">
-        <div class="sec-label">04</div>
-        <h2 class="doc-h2">BiLSTM Model</h2>
-        <p class="doc-p">A Bidirectional Long Short-Term Memory network that processes sequences of 20 trading days (sliding window) to predict the next-day direction.</p>
-        <table class="doc-table">
-          <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>Architecture</td><td>Bidirectional LSTM</td></tr>
-            <tr><td>Input features</td><td>OHLCV + RSI + MACD + BB + sentiment score</td></tr>
-            <tr><td>Sequence length</td><td>20 trading days</td></tr>
-            <tr><td>Output</td><td>Binary — UP (1) / DOWN (0)</td></tr>
-            <tr><td>Train/test split</td><td>Chronological (no data leakage)</td></tr>
-            <tr><td>Framework</td><td>PyTorch</td></tr>
-            <tr><td>Training environment</td><td>Google Colab (GPU)</td></tr>
-          </tbody>
-        </table>
-      </section>
+        <section id="dataset">
+          <div class="sec-label">02</div>
+          <h2 class="doc-h2">Dataset</h2>
+          <p class="doc-p">Data collected from five sources covering the period January 2020 to December 2024.</p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Data type</th>
+                <th>Records</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>yfinance</td>
+                <td>OHLCV daily price data</td>
+                <td>12,540 trading days</td>
+              </tr>
+              <tr>
+                <td>Alpha Vantage</td>
+                <td>News headlines + sentiment labels</td>
+                <td>~1,040 records</td>
+              </tr>
+              <tr>
+                <td>NewsAPI</td>
+                <td>Financial news articles</td>
+                <td>Included in 8,444</td>
+              </tr>
+              <tr>
+                <td>GDELT</td>
+                <td>Global news events &amp; tone</td>
+                <td>Included in 8,444</td>
+              </tr>
+              <tr>
+                <td>Finnhub</td>
+                <td>Company news &amp; earnings</td>
+                <td>Included in 8,444</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="tag-row" style="margin-top:1rem">
+            <span class="tag">10 stocks</span>
+            <span class="tag">2020–2024</span>
+            <span class="tag">8,444 articles</span>
+            <span class="tag">12,540 trading days</span>
+          </div>
+        </section>
 
-      <section id="api">
-        <div class="sec-label">05</div>
-        <h2 class="doc-h2">FastAPI Endpoints</h2>
-        <p class="doc-p">The backend exposes a REST API consumed by the React frontend.</p>
-        <div class="code-block">
-          <span class="hl2">GET</span>  <span class="hl">/predict/{ticker}</span><br/>
-          <span class="comment"># Returns prediction + sentiment for a given ticker</span><br/><br/>
-          <span class="hl2">GET</span>  <span class="hl">/sentiment/{ticker}</span><br/>
-          <span class="comment"># Returns aggregated daily FinBERT scores</span><br/><br/>
-          <span class="hl2">GET</span>  <span class="hl">/health</span><br/>
-          <span class="comment"># Health check endpoint</span>
-        </div>
-        <h3 class="doc-h3">Sample response — /predict/AAPL</h3>
-        <div class="code-block">
-          {<br/>
-          &nbsp;&nbsp;<span class="hl3">"ticker"</span>: <span class="hl">"AAPL"</span>,<br/>
-          &nbsp;&nbsp;<span class="hl3">"prediction"</span>: <span class="hl">"UP"</span>,<br/>
-          &nbsp;&nbsp;<span class="hl3">"confidence"</span>: <span class="hl2">0.73</span>,<br/>
-          &nbsp;&nbsp;<span class="hl3">"sentiment_score"</span>: <span class="hl2">0.61</span>,<br/>
-          &nbsp;&nbsp;<span class="hl3">"sentiment_label"</span>: <span class="hl">"positive"</span>,<br/>
-          &nbsp;&nbsp;<span class="hl3">"date"</span>: <span class="hl">"2024-12-01"</span><br/>
-          }
-        </div>
-      </section>
+        <section id="finbert">
+          <div class="sec-label">03</div>
+          <h2 class="doc-h2">FinBERT Sentiment Model</h2>
+          <p class="doc-p">Base model: <code
+              style="font-family:var(--mono);font-size:12px;color:var(--accent)">yiyanghkust/finbert-tone</code> — a
+            BERT model pre-trained on financial text and fine-tuned for tone classification.</p>
+          <h3 class="doc-h3">Output labels</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Count</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>positive</td>
+                <td>2,565</td>
+                <td>Bullish or favourable news sentiment</td>
+              </tr>
+              <tr>
+                <td>negative</td>
+                <td>3,662</td>
+                <td>Bearish, risk, or unfavourable sentiment</td>
+              </tr>
+              <tr>
+                <td>neutral</td>
+                <td>1,808</td>
+                <td>Factual reporting, no directional bias</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3 class="doc-h3">Daily aggregation</h3>
+          <div class="code-block">
+            <span class="comment"># Aggregate per stock per day</span><br />
+            daily_sentiment = df.groupby([<span class="hl3">'ticker'</span>, <span
+              class="hl3">'date'</span>]).agg({<br />
+            &nbsp;&nbsp;<span class="hl3">'score'</span>: <span class="hl">'mean'</span>,<br />
+            &nbsp;&nbsp;<span class="hl3">'label'</span>: <span class="hl">lambda</span> x:
+            x.value_counts().idxmax()<br />
+            }).reset_index()
+          </div>
+        </section>
 
-      <section id="setup">
-        <div class="sec-label">06</div>
-        <h2 class="doc-h2">Setup &amp; Run</h2>
-        <h3 class="doc-h3">Backend (FastAPI)</h3>
-        <div class="code-block">
-          <span class="comment"># Install dependencies</span><br/>
-          pip install -r backend/requirements.txt<br/><br/>
-          <span class="comment"># Start the server</span><br/>
-          cd backend<br/>
-          uvicorn main:<span class="hl">app</span> --host <span class="hl3">0.0.0.0</span> --port <span class="hl3">8000</span>
-        </div>
-        <h3 class="doc-h3">Frontend (React + Vite)</h3>
-        <div class="code-block">
-          <span class="comment"># Install &amp; run dev server</span><br/>
-          cd frontend<br/>
-          npm install<br/>
-          npm run dev<br/><br/>
-          <span class="comment"># Build for production</span><br/>
-          npm run build
-        </div>
-        <h3 class="doc-h3">Model training (Google Colab)</h3>
-        <div class="code-block">
-          <span class="comment"># Run in order:</span><br/>
-          1. <span class="hl">01_data_normalisation.ipynb</span><br/>
-          2. <span class="hl">02_finbert_scoring.ipynb</span><br/>
-          3. <span class="hl">03_bilstm_training.ipynb</span>
-        </div>
-      </section>
+        <section id="bilstm">
+          <div class="sec-label">04</div>
+          <h2 class="doc-h2">BiLSTM Model</h2>
+          <p class="doc-p">A Bidirectional Long Short-Term Memory network that processes sequences of 20 trading days
+            (sliding window) to predict the next-day direction.</p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Architecture</td>
+                <td>Bidirectional LSTM</td>
+              </tr>
+              <tr>
+                <td>Input features</td>
+                <td>OHLCV + RSI + MACD + BB + sentiment score</td>
+              </tr>
+              <tr>
+                <td>Sequence length</td>
+                <td>20 trading days</td>
+              </tr>
+              <tr>
+                <td>Output</td>
+                <td>Binary — UP (1) / DOWN (0)</td>
+              </tr>
+              <tr>
+                <td>Train/test split</td>
+                <td>Chronological (no data leakage)</td>
+              </tr>
+              <tr>
+                <td>Framework</td>
+                <td>PyTorch</td>
+              </tr>
+              <tr>
+                <td>Training environment</td>
+                <td>Google Colab (GPU)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
+        <section id="api">
+          <div class="sec-label">05</div>
+          <h2 class="doc-h2">FastAPI Endpoints</h2>
+          <p class="doc-p">The backend exposes a REST API consumed by the React frontend.</p>
+          <div class="code-block">
+            <span class="hl2">GET</span> <span class="hl">/predict/{ticker}</span><br />
+            <span class="comment"># Returns prediction + sentiment for a given ticker</span><br /><br />
+            <span class="hl2">GET</span> <span class="hl">/sentiment/{ticker}</span><br />
+            <span class="comment"># Returns aggregated daily FinBERT scores</span><br /><br />
+            <span class="hl2">GET</span> <span class="hl">/health</span><br />
+            <span class="comment"># Health check endpoint</span>
+          </div>
+          <h3 class="doc-h3">Sample response — /predict/AAPL</h3>
+          <div class="code-block">
+            {<br />
+            &nbsp;&nbsp;<span class="hl3">"ticker"</span>: <span class="hl">"AAPL"</span>,<br />
+            &nbsp;&nbsp;<span class="hl3">"prediction"</span>: <span class="hl">"UP"</span>,<br />
+            &nbsp;&nbsp;<span class="hl3">"confidence"</span>: <span class="hl2">0.73</span>,<br />
+            &nbsp;&nbsp;<span class="hl3">"sentiment_score"</span>: <span class="hl2">0.61</span>,<br />
+            &nbsp;&nbsp;<span class="hl3">"sentiment_label"</span>: <span class="hl">"positive"</span>,<br />
+            &nbsp;&nbsp;<span class="hl3">"date"</span>: <span class="hl">"2024-12-01"</span><br />
+            }
+          </div>
+        </section>
+
+        <section id="setup">
+          <div class="sec-label">06</div>
+          <h2 class="doc-h2">Setup &amp; Run</h2>
+          <h3 class="doc-h3">Backend (FastAPI)</h3>
+          <div class="code-block">
+            <span class="comment"># Install dependencies</span><br />
+            pip install -r backend/requirements.txt<br /><br />
+            <span class="comment"># Start the server</span><br />
+            cd backend<br />
+            uvicorn main:<span class="hl">app</span> --host <span class="hl3">0.0.0.0</span> --port <span
+              class="hl3">8000</span>
+          </div>
+          <h3 class="doc-h3">Frontend (React + Vite)</h3>
+          <div class="code-block">
+            <span class="comment"># Install &amp; run dev server</span><br />
+            cd frontend<br />
+            npm install<br />
+            npm run dev<br /><br />
+            <span class="comment"># Build for production</span><br />
+            npm run build
+          </div>
+          <h3 class="doc-h3">Model training (Google Colab)</h3>
+          <div class="code-block">
+            <span class="comment"># Run in order:</span><br />
+            1. <span class="hl">01_data_normalisation.ipynb</span><br />
+            2. <span class="hl">02_finbert_scoring.ipynb</span><br />
+            3. <span class="hl">03_bilstm_training.ipynb</span>
+          </div>
+        </section>
+
+      </div>
     </div>
   </div>
-</div>
 
-<footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+  <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
 </body>
+
 </html>
