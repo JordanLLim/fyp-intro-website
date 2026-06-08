@@ -1,321 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demo | FYP-26-S2-27</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .demo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demo | FYP-26-S2-27</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
 
-    .demo-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
+.demo-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
 
-    .demo-card:hover {
-      border-color: var(--border2);
-    }
+.demo-card:hover { border-color: var(--border2); }
 
-    .demo-img-wrap {
-      aspect-ratio: 16/9;
-      background: var(--bg3);
-      overflow: hidden;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
+.demo-img-wrap {
+  aspect-ratio: 16/9;
+  background: var(--bg3);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
 
-    .demo-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.demo-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-    /* Placeholder shown when no image */
-    .demo-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+/* Placeholder shown when no image */
+.demo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
-    .demo-placeholder-box {
-      width: 44px;
-      height: 44px;
-      border: 1px dashed var(--border2);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.demo-placeholder-box {
+  width: 44px;
+  height: 44px;
+  border: 1px dashed var(--border2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .demo-placeholder-box svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--text3);
-      fill: none;
-      stroke-width: 1.5;
-    }
+.demo-placeholder-box svg {
+  width: 22px; height: 22px;
+  stroke: var(--text3);
+  fill: none;
+  stroke-width: 1.5;
+}
 
-    .demo-placeholder p {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text2);
-      letter-spacing: 0.05em;
-    }
+.demo-placeholder p {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+}
 
-    .demo-caption {
-      padding: 1rem 1.125rem;
-    }
+.demo-caption {
+  padding: 1rem 1.125rem;
+}
 
-    .demo-caption-num {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--text2);
-      letter-spacing: 0.1em;
-      margin-bottom: 3px;
-    }
+.demo-caption-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text2);
+  letter-spacing: 0.1em;
+  margin-bottom: 3px;
+}
 
-    .demo-caption-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
+.demo-caption-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 3px;
+}
 
-    .demo-caption-sub {
-      font-size: 13px;
-      color: var(--text2);
-    }
+.demo-caption-sub {
+  font-size: 13px;
+  color: var(--text2);
+}
 
-    .how-it-works {
-      margin-top: 3.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-    }
+.how-it-works {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
 
-    .how-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 1.5rem;
-    }
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
 
-    .how-step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.25rem;
-    }
+.how-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem;
+}
 
-    .how-step-num {
-      font-family: var(--mono);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent);
-      opacity: 0.4;
-      line-height: 1;
-      margin-bottom: 0.75rem;
-    }
+.how-step-num {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
 
-    .how-step-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 5px;
-    }
+.how-step-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 5px;
+}
 
-    .how-step-desc {
-      font-size: 13px;
-      color: var(--text2);
-      line-height: 1.7;
-    }
+.how-step-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
 
-    .add-note {
-      margin-top: 1.25rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 4px 4px 0;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--text2);
-      line-height: 1.8;
-    }
+.add-note {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.8;
+}
 
-    @media (max-width: 768px) {
-      .demo-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .how-steps {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+@media (max-width: 768px) {
+  .demo-grid { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr; }
+}
+</style>
 </head>
-
 <body>
-  <nav>
-    <a class="nav-logo" href="index.html">
-      <img src="logo_cropped.png" alt="Rocket Trade Logo" style="width:auto;max-width:160px;object-fit:contain;" />
-      <!-- <span class="nav-logo-text">Rocket Trade</span> -->
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="demo.html" class="active">Demo</a></li>
-      <li><a href="meetings.html">Meetings</a></li>
-      <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz?usp=drive_link"
-          target="_blank">Docs ↗</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Rocket Trade Logo" style="height:44px;width:auto;max-width:160px;object-fit:contain;" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="demo.html" class="active">Demo</a></li>
+    <li><a href="meetings.html">Meetings</a></li>
+    <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz" target="_blank">Docs ↗</a></li>
+  </ul>
+</nav>
 
-  <div class="page">
-    <div class="page-header">
-      <div class="page-eyebrow">Demo</div>
-      <h1 class="page-title">Application Screenshots</h1>
-      <p class="page-subtitle">The live prediction interface built with React and FastAPI — showing stock selection,
-        XGBoost inference, and FinBERT sentiment visualisation.</p>
+<div class="page">
+  <div class="page-header">
+    <div class="page-eyebrow">Demo</div>
+    <h1 class="page-title">Application Screenshots</h1>
+    <p class="page-subtitle">The live prediction interface built with React and FastAPI — showing stock selection, BiLSTM inference, and FinBERT sentiment visualisation.</p>
+  </div>
+
+  <div class="demo-grid">
+
+    <div class="demo-card">
+      <div class="demo-img-wrap">
+        <!-- Replace src with your actual screenshot file -->
+        <!-- <img src="screenshots/dashboard.png" alt="Main dashboard" /> -->
+        <div class="demo-placeholder">
+          <div class="demo-placeholder-box">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <p>// screenshots/dashboard.png</p>
+        </div>
+      </div>
+      <div class="demo-caption">
+        <div class="demo-caption-num">01</div>
+        <div class="demo-caption-title">Main dashboard</div>
+        <div class="demo-caption-sub">Stock selector with live prediction trigger</div>
+      </div>
     </div>
 
-    <div class="demo-grid">
-
-      <div class="demo-card">
-        <div class="demo-img-wrap">
-          <!-- Replace src with your actual screenshot file -->
-          <!-- <img src="screenshots/dashboard.png" alt="Main dashboard" /> -->
-          <div class="demo-placeholder">
-            <div class="demo-placeholder-box">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9" />
-              </svg>
-            </div>
-            <p>// screenshots/dashboard.png</p>
+    <div class="demo-card">
+      <div class="demo-img-wrap">
+        <!-- <img src="screenshots/sentiment.png" alt="Sentiment gauge" /> -->
+        <div class="demo-placeholder">
+          <div class="demo-placeholder-box">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
           </div>
-        </div>
-        <div class="demo-caption">
-          <div class="demo-caption-num">01</div>
-          <div class="demo-caption-title">Main dashboard</div>
-          <div class="demo-caption-sub">Stock selector with live prediction trigger</div>
+          <p>// screenshots/sentiment.png</p>
         </div>
       </div>
-
-      <div class="demo-card">
-        <div class="demo-img-wrap">
-          <!-- <img src="screenshots/sentiment.png" alt="Sentiment gauge" /> -->
-          <div class="demo-placeholder">
-            <div class="demo-placeholder-box">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 3" />
-              </svg>
-            </div>
-            <p>// screenshots/sentiment.png</p>
-          </div>
-        </div>
-        <div class="demo-caption">
-          <div class="demo-caption-num">02</div>
-          <div class="demo-caption-title">Sentiment gauge panel</div>
-          <div class="demo-caption-sub">Real-time FinBERT sentiment score display</div>
-        </div>
+      <div class="demo-caption">
+        <div class="demo-caption-num">02</div>
+        <div class="demo-caption-title">Sentiment gauge panel</div>
+        <div class="demo-caption-sub">Real-time FinBERT sentiment score display</div>
       </div>
-
-      <div class="demo-card">
-        <div class="demo-img-wrap">
-          <!-- <img src="screenshots/prediction.png" alt="Prediction result" /> -->
-          <div class="demo-placeholder">
-            <div class="demo-placeholder-box">
-              <svg viewBox="0 0 24 24">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-              </svg>
-            </div>
-            <p>// screenshots/prediction.png</p>
-          </div>
-        </div>
-        <div class="demo-caption">
-          <div class="demo-caption-num">03</div>
-          <div class="demo-caption-title">Prediction output</div>
-          <div class="demo-caption-sub">UP / DOWN result with confidence score</div>
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <div class="demo-img-wrap">
-          <!-- <img src="screenshots/pipeline.png" alt="Pipeline view" /> -->
-          <div class="demo-placeholder">
-            <div class="demo-placeholder-box">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-              </svg>
-            </div>
-            <p>// screenshots/pipeline.png</p>
-          </div>
-        </div>
-        <div class="demo-caption">
-          <div class="demo-caption-num">04</div>
-          <div class="demo-caption-title">Architecture overview</div>
-          <div class="demo-caption-sub">End-to-end model pipeline visualisation</div>
-        </div>
-      </div>
-
     </div>
 
-    <div class="add-note">
-      // To add screenshots: create a <strong style="color:var(--text)">screenshots/</strong> folder in your repo, drop
-      your images in, then uncomment the &lt;img&gt; tags above and remove the placeholder divs.
+    <div class="demo-card">
+      <div class="demo-img-wrap">
+        <!-- <img src="screenshots/prediction.png" alt="Prediction result" /> -->
+        <div class="demo-placeholder">
+          <div class="demo-placeholder-box">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <p>// screenshots/prediction.png</p>
+        </div>
+      </div>
+      <div class="demo-caption">
+        <div class="demo-caption-num">03</div>
+        <div class="demo-caption-title">Prediction output</div>
+        <div class="demo-caption-sub">UP / DOWN result with confidence score</div>
+      </div>
     </div>
 
-    <!-- How it works -->
-    <div class="how-it-works">
-      <div class="sec-label">How it works</div>
-      <h2 class="sec-title">Using the prediction interface</h2>
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="how-step-num">01</div>
-          <div class="how-step-title">Select a stock</div>
-          <div class="how-step-desc">Choose any of the 10 tracked tickers from the dropdown — AAPL, MSFT, GOOGL, AMZN,
-            NVDA, META, TSLA, AVGO, ORCL, or AMD.</div>
+    <div class="demo-card">
+      <div class="demo-img-wrap">
+        <!-- <img src="screenshots/pipeline.png" alt="Pipeline view" /> -->
+        <div class="demo-placeholder">
+          <div class="demo-placeholder-box">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <p>// screenshots/pipeline.png</p>
         </div>
-        <div class="how-step">
-          <div class="how-step-num">02</div>
-          <div class="how-step-title">Auto-trigger inference</div>
-          <div class="how-step-desc">The system automatically calls the FastAPI backend, which runs the BiLSTM model on
-            the latest normalised price and sentiment features.</div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-num">03</div>
-          <div class="how-step-title">View results</div>
-          <div class="how-step-desc">The prediction card shows the UP / DOWN directional forecast, the model confidence
-            score, and the FinBERT sentiment gauge for that stock's recent news.</div>
-        </div>
+      </div>
+      <div class="demo-caption">
+        <div class="demo-caption-num">04</div>
+        <div class="demo-caption-title">Architecture overview</div>
+        <div class="demo-caption-sub">End-to-end model pipeline visualisation</div>
       </div>
     </div>
 
   </div>
 
-  <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
-</body>
+  <div class="add-note">
+    // To add screenshots: create a <strong style="color:var(--text)">screenshots/</strong> folder in your repo, drop your images in, then uncomment the &lt;img&gt; tags above and remove the placeholder divs.
+  </div>
 
+  <!-- How it works -->
+  <div class="how-it-works">
+    <div class="sec-label">How it works</div>
+    <h2 class="sec-title">Using the prediction interface</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <div class="how-step-title">Select a stock</div>
+        <div class="how-step-desc">Choose any of the 10 tracked tickers from the dropdown — AAPL, MSFT, GOOGL, AMZN, NVDA, META, TSLA, AVGO, ORCL, or AMD.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <div class="how-step-title">Auto-trigger inference</div>
+        <div class="how-step-desc">The system automatically calls the FastAPI backend, which runs the BiLSTM model on the latest normalised price and sentiment features.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <div class="how-step-title">View results</div>
+        <div class="how-step-desc">The prediction card shows the UP / DOWN directional forecast, the model confidence score, and the FinBERT sentiment gauge for that stock's recent news.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+</body>
 </html>
