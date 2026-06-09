@@ -50,7 +50,7 @@
 <body>
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="logo_cropped.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
+    <img src="logo.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -69,14 +69,14 @@
     <p class="page-subtitle">15+ features spanning AI predictions, real-time dashboards, simulated trading, expert portfolios, and community forums — tailored by user role.</p>
   </div>
 
-  <!-- <!-- Role filter -->
+  <!-- Role filter -->
   <div class="role-tabs reveal">
     <button class="role-btn active" onclick="showRole('all', this)">All Features</button>
     <button class="role-btn" onclick="showRole('basic', this)">Basic / Premium User</button>
     <button class="role-btn" onclick="showRole('premium', this)">Premium Only</button>
     <button class="role-btn" onclick="showRole('consultant', this)">Consultant</button>
     <button class="role-btn" onclick="showRole('admin', this)">Admin</button>
-  </div> -->
+  </div>
 
   <!-- ALL / BASIC+PREMIUM features -->
   <div class="feat-group visible" id="group-all">
@@ -85,37 +85,37 @@
     <div class="feat-grid" style="margin-top:1rem">
       <div class="feat-card reveal delay-1">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="feat-title">Real-Time Stock Dashboard</div>
+        <div class="feat-title" data-role="basic">Real-Time Stock Dashboard</div>
         <div class="feat-desc">Live stock prices, trends, candlestick charts, trading volumes, and market data. Search any of the 10 tracked NASDAQ tech stocks and monitor price movements instantly.</div>
         <span class="feat-badge badge-free">Basic + Premium</span>
       </div>
       <div class="feat-card reveal delay-2">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <div class="feat-title">AI Stock Prediction</div>
+        <div class="feat-title" data-role="basic premium">AI Stock Prediction</div>
         <div class="feat-desc">XGBoost + FinBERT hybrid model predicts next-day stock movement using technical indicators and financial news sentiment. Data range: 2021–2026 across 10 large-cap NASDAQ stocks.</div>
         <span class="feat-badge badge-free">Basic (limited) · </span><span class="feat-badge badge-premium">Premium (unlimited)</span>
       </div>
       <div class="feat-card reveal delay-3">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <div class="feat-title">Watchlist Management</div>
+        <div class="feat-title" data-role="basic">Watchlist Management</div>
         <div class="feat-desc">Add, view, monitor, and remove stocks from a personal watchlist. Real-time price updates and status checks keep your shortlisted stocks always in view.</div>
         <span class="feat-badge badge-free">Basic + Premium</span>
       </div>
       <div class="feat-card reveal delay-4">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <div class="feat-title">Simulated Portfolio</div>
+        <div class="feat-title" data-role="basic">Simulated Portfolio</div>
         <div class="feat-desc">Buy and sell stocks with virtual funds — no real money required. Practice investment strategies, track performance, and review your full transaction history.</div>
         <span class="feat-badge badge-free">Basic + Premium</span>
       </div>
       <div class="feat-card reveal delay-1">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
-        <div class="feat-title">Stock Recommendations</div>
+        <div class="feat-title" data-role="basic">Stock Recommendations</div>
         <div class="feat-desc">Buy, hold, or sell suggestions generated from AI prediction results and the user's personal risk profile. Recommendations are filtered and personalized per user.</div>
         <span class="feat-badge badge-free">Basic + Premium</span>
       </div>
       <div class="feat-card reveal delay-2">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="feat-title">Risk Assessment Profiling</div>
+        <div class="feat-title" data-role="basic">Risk Assessment Profiling</div>
         <div class="feat-desc">The system identifies each user's risk tolerance level to personalise stock recommendations and investment guidance — ensuring advice matches the user's financial comfort zone.</div>
         <span class="feat-badge badge-free">Basic + Premium</span>
       </div>
@@ -125,25 +125,25 @@
     <div class="feat-grid" style="margin-top:1rem">
       <div class="feat-card reveal delay-1">
         <div class="feat-icon amber"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-        <div class="feat-title">Enhanced Charting Tools</div>
+        <div class="feat-title" data-role="premium">Enhanced Charting Tools</div>
         <div class="feat-desc">Premium users access advanced technical indicators — MACD, RSI, Bollinger Bands — plus drawing tools to mark support, resistance, and trend lines on interactive charts.</div>
         <span class="feat-badge badge-premium">Premium Only</span>
       </div>
       <div class="feat-card reveal delay-2">
         <div class="feat-icon amber"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-        <div class="feat-title">Custom Stock Alerts</div>
+        <div class="feat-title" data-role="premium">Custom Stock Alerts</div>
         <div class="feat-desc">Set personalized alerts based on price thresholds, market movements, or trading signals. The system monitors conditions continuously and sends notifications when triggered.</div>
         <span class="feat-badge badge-premium">Premium Only</span>
       </div>
       <div class="feat-card reveal delay-3">
         <div class="feat-icon amber"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="feat-title">Expert Consultation</div>
+        <div class="feat-title" data-role="premium">Expert Consultation</div>
         <div class="feat-desc">Submit consultation forms directly to certified stock consultants and receive personalized investment advice and strategy recommendations tailored to your portfolio goals.</div>
         <span class="feat-badge badge-premium">Premium Only</span>
       </div>
       <div class="feat-card reveal delay-4">
         <div class="feat-icon amber"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="feat-title">Expert Portfolios (Full Access)</div>
+        <div class="feat-title" data-role="premium">Expert Portfolios (Full Access)</div>
         <div class="feat-desc">View complete expert portfolios including stock selections, percentage allocations, performance graphs, and purchase rationale — full details available to premium subscribers only.</div>
         <span class="feat-badge badge-premium">Premium Only</span>
       </div>
@@ -153,25 +153,25 @@
     <div class="feat-grid" style="margin-top:1rem">
       <div class="feat-card reveal delay-1">
         <div class="feat-icon blue"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-        <div class="feat-title">Knowledge Hub</div>
+        <div class="feat-title" data-role="basic premium">Knowledge Hub</div>
         <div class="feat-desc">Educational articles and investment guides covering stock market concepts, trading strategies, and technical analysis. Basic users access limited content; Premium users unlock the full library.</div>
         <span class="feat-badge badge-free">Basic (limited) · </span><span class="feat-badge badge-premium">Premium (full)</span>
       </div>
       <div class="feat-card reveal delay-2">
         <div class="feat-icon blue"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="feat-title">AI Chatbot</div>
+        <div class="feat-title" data-role="basic">AI Chatbot</div>
         <div class="feat-desc">An intelligent chatbot providing instant stock insights, market analysis, and investment-related guidance. Ask questions in natural language and receive data-driven answers.</div>
         <span class="feat-badge badge-free">Basic + Premium</span>
       </div>
       <div class="feat-card reveal delay-3">
         <div class="feat-icon blue"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="feat-title">Community Forum</div>
+        <div class="feat-title" data-role="basic">Community Forum</div>
         <div class="feat-desc">Create, comment, and engage on trading discussions with other investors and consultants. Share market ideas, ask questions, and stay updated on community insights.</div>
         <span class="feat-badge badge-free">All Users</span>
       </div>
       <div class="feat-card reveal delay-4">
         <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div class="feat-title">Expert Portfolio Browsing</div>
+        <div class="feat-title" data-role="basic premium">Expert Portfolio Browsing</div>
         <div class="feat-desc">All users can browse the expert portfolio list. Basic users see limited summary info; Premium users unlock full strategy details, stock weightings, and performance metrics.</div>
         <span class="feat-badge badge-free">Basic (preview) · </span><span class="feat-badge badge-premium">Premium (full)</span>
       </div>
@@ -181,13 +181,13 @@
     <div class="feat-grid" style="margin-top:1rem">
       <div class="feat-card reveal delay-1">
         <div class="feat-icon" style="background:rgba(192,132,252,0.08);border-color:rgba(192,132,252,0.2)"><svg viewBox="0 0 24 24" style="stroke:#c084fc"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-        <div class="feat-title">Create &amp; Manage Expert Portfolios</div>
+        <div class="feat-title" data-role="consultant">Create &amp; Manage Expert Portfolios</div>
         <div class="feat-desc">Consultants build curated stock portfolios with ticker allocations, percentage weights, and purchase rationale. Portfolios are published for users to browse and learn from.</div>
         <span class="feat-badge badge-consultant">Consultant</span>
       </div>
       <div class="feat-card reveal delay-2">
         <div class="feat-icon" style="background:rgba(192,132,252,0.08);border-color:rgba(192,132,252,0.2)"><svg viewBox="0 0 24 24" style="stroke:#c084fc"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="feat-title">Reply to User Questions</div>
+        <div class="feat-title" data-role="consultant">Reply to User Questions</div>
         <div class="feat-desc">View and respond to consultation forms submitted by Premium users. Provide professional investment guidance, strategy recommendations, and answers to user enquiries.</div>
         <span class="feat-badge badge-consultant">Consultant</span>
       </div>
@@ -197,25 +197,25 @@
     <div class="feat-grid" style="margin-top:1rem">
       <div class="feat-card reveal delay-1">
         <div class="feat-icon red"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="feat-title">User Account Management</div>
+        <div class="feat-title" data-role="admin">User Account Management</div>
         <div class="feat-desc">View, search, create, suspend, and delete user accounts. Manage user profiles and access levels across all roles — Basic, Premium, Consultant, and Admin.</div>
         <span class="feat-badge badge-admin">Admin</span>
       </div>
       <div class="feat-card reveal delay-2">
         <div class="feat-icon red"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <div class="feat-title">Content Moderation</div>
+        <div class="feat-title" data-role="admin">Content Moderation</div>
         <div class="feat-desc">Monitor, edit, and delete forum posts and comments. Manage investment guidance articles — add, edit, or remove educational content to maintain platform accuracy.</div>
         <span class="feat-badge badge-admin">Admin</span>
       </div>
       <div class="feat-card reveal delay-3">
         <div class="feat-icon red"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="feat-title">Trade Oversight</div>
+        <div class="feat-title" data-role="admin">Trade Oversight</div>
         <div class="feat-desc">View complete logs of all simulated buy and sell orders across the platform. Cancel trades made during system downtime and monitor overall trading activity.</div>
         <span class="feat-badge badge-admin">Admin</span>
       </div>
       <div class="feat-card reveal delay-4">
         <div class="feat-icon red"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <div class="feat-title">Admin Dashboard</div>
+        <div class="feat-title" data-role="admin">Admin Dashboard</div>
         <div class="feat-desc">Centralized admin portal with sidebar navigation for user management, content control, trade oversight, and system monitoring — all accessible from a single interface.</div>
         <span class="feat-badge badge-admin">Admin</span>
       </div>
@@ -229,8 +229,28 @@
 function showRole(role, btn) {
   document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  // For now all in one group - just scroll to relevant section
-  document.getElementById('group-all').classList.add('visible');
+
+  document.querySelectorAll('.feat-card').forEach(card => {
+    if (role === 'all') {
+      card.style.display = '';
+    } else {
+      const titleEl = card.querySelector('[data-role]');
+      const roles = titleEl ? titleEl.dataset.role.split(' ') : [];
+      card.style.display = roles.includes(role) ? '' : 'none';
+    }
+  });
+
+  // Hide section labels with no visible cards
+  document.querySelectorAll('.feat-grid').forEach(grid => {
+    const visible = [...grid.querySelectorAll('.feat-card')].some(c => c.style.display !== 'none');
+    grid.style.display = visible ? '' : 'none';
+    // Hide the sec-label before this grid too
+    let prev = grid.previousElementSibling;
+    while (prev && !prev.classList.contains('sec-label')) prev = prev.previousElementSibling;
+    if (prev && prev.classList.contains('sec-label')) {
+      prev.style.display = visible ? '' : 'none';
+    }
+  });
 }
 
 const obs = new IntersectionObserver(entries => {
