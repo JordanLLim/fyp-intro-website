@@ -1,129 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Team | Rocket Trade</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
-<style>
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 3.5rem;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team | Rocket Trade</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
 
-.team-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 2rem;
-  transition: border-color 0.25s, background 0.25s, transform 0.25s;
-}
-.team-card:hover { border-color: var(--border2); background: var(--surface2); transform: translateY(-4px); }
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
 
-.team-name { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-.team-role { font-size: 13px; color: var(--accent); font-family: var(--mono); letter-spacing: 0.04em; margin-bottom: 1rem; }
-.team-desc { font-size: 15px; color: var(--text2); line-height: 1.85; }
+    .team-card:hover {
+      border-color: var(--border2);
+      background: var(--surface2);
+      transform: translateY(-4px);
+    }
 
-.sup-section {
-  margin-top: 3.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--border);
-}
+    .team-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
 
-.sup-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 1.25rem;
-}
+    .team-role {
+      font-size: 13px;
+      color: var(--accent);
+      font-family: var(--mono);
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
 
-.sup-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem 2rem;
-  transition: border-color 0.25s, transform 0.25s;
-}
-.sup-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+    .team-desc {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.85;
+    }
 
-.sup-name { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.sup-role { font-size: 14px; color: var(--text2); }
+    .sup-section {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
 
-@media (max-width: 768px) {
-  .team-grid, .sup-row { grid-template-columns: 1fr; }
-}
-</style>
+    .sup-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .sup-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .sup-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-3px);
+    }
+
+    .sup-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .sup-role {
+      font-size: 14px;
+      color: var(--text2);
+    }
+
+    @media (max-width: 768px) {
+
+      .team-grid,
+      .sup-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<nav>
-  <a class="nav-logo" href="index.html">
-    <img src="logo_cropped.png" alt="Rocket Trade Logo" style="height:44px;width:auto;max-width:160px;object-fit:contain;" />
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="features.html">Features</a></li>
-    <li><a href="team.html" class="active">Team</a></li>
-    <li><a href="demo.html">Demo</a></li>
-    <li><a href="meetings.html">Meetings</a></li>
-    <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz" target="_blank">Docs ↗</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="logo_cropped.png" alt="Rocket Trade Logo"
+        style="height:44px;width:auto;max-width:160px;object-fit:contain;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="demo.html">Demo</a></li>
+      <li><a href="meetings.html">Meetings</a></li>
+      <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz" target="_blank">Docs ↗</a>
+      </li>
+    </ul>
+  </nav>
 
-<div class="page">
-  <div class="page-header">
-    <div class="page-eyebrow anim-fade-in">The Team</div>
-    <h1 class="page-title anim-fade-up anim-d1">Meet the developers</h1>
-  </div>
+  <div class="page">
+    <div class="page-header">
+      <div class="page-eyebrow anim-fade-in">The Team</div>
+      <h1 class="page-title anim-fade-up anim-d1">Meet the developers</h1>
+    </div>
 
-  <div class="team-grid">
-    <div class="team-card anim-fade-up anim-d1">
-      <div class="team-name">Nguy Kim Anh</div>
-      <div class="team-role">Team Leader · Documenter · Backend Developer</div>
-      <p class="team-desc">UOW ID: 9182226<br />SIM ID: 10247215<br />Email: nguy001@mymail.sim.edu.sg</p>
-    </div>
-    <div class="team-card anim-fade-up anim-d2">
-      <div class="team-name">Jordan Lim Jun Hong</div>
-      <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">UOW ID: 8495816<br />SIM ID: 10256580<br />Email: jjhlim003@mymail.sim.edu.sg</p>
-    </div>
-    <div class="team-card anim-fade-up anim-d3">
-      <div class="team-name">Kim Bogyeong</div>
-      <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">UOW ID: 9096838<br />SIM ID: 10256782<br />Email: kim204@mymail.sim.edu.sg</p>
-    </div>
-    <div class="team-card anim-fade-up anim-d4">
-      <div class="team-name">Lanice Lam Wen Xin</div>
-      <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">UOW ID: 8576506<br />SIM ID: 10257775<br />Email: lwxlam001@mymail.sim.edu.sg</p>
-    </div>
-    <div class="team-card anim-fade-up anim-d5">
-      <div class="team-name">Lim Ying Xin</div>
-      <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
-      <p class="team-desc">UOW ID: 9097156<br />SIM ID: 10253809<br />Email: yxlim043@mymail.sim.edu.sg</p>
-    </div>
-  </div>
-
-  <div class="sup-section">
-    <div class="sec-label">Academic Staff</div>
-    <h2 class="sec-title" style="margin-bottom:1.25rem">Supervisor &amp; Accessor</h2>
-    <div class="sup-row">
-      <div class="sup-card anim-fade-up anim-d1">
-        <div class="sec-label" style="margin-bottom:0.5rem">Supervisor</div>
-        <div class="sup-name">Mr Ee Kiam Keong</div>
-        <!-- <div class="sup-role">Singapore Institute of Management</div> -->
+    <div class="team-grid">
+      <div class="team-card anim-fade-up anim-d1">
+        <div class="team-name">Nguy Kim Anh</div>
+        <div class="team-role">Team Leader · Documenter · Backend Developer · Frontend Developer</div>
+        <p class="team-desc">UOW ID: 9182226<br />SIM ID: 10247215<br />Email: nguy001@mymail.sim.edu.sg</p>
       </div>
-      <div class="sup-card anim-fade-up anim-d2">
-        <div class="sec-label" style="margin-bottom:0.5rem">Accessor</div>
-        <div class="sup-name">Mr Premrajan Ponnambath</div>
-        <!-- <div class="sup-role">Singapore Institute of Management</div> -->
+      <div class="team-card anim-fade-up anim-d2">
+        <div class="team-name">Jordan Lim Jun Hong</div>
+        <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
+        <p class="team-desc">UOW ID: 8495816<br />SIM ID: 10256580<br />Email: jjhlim003@mymail.sim.edu.sg</p>
+      </div>
+      <div class="team-card anim-fade-up anim-d3">
+        <div class="team-name">Kim Bogyeong</div>
+        <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
+        <p class="team-desc">UOW ID: 9096838<br />SIM ID: 10256782<br />Email: kim204@mymail.sim.edu.sg</p>
+      </div>
+      <div class="team-card anim-fade-up anim-d4">
+        <div class="team-name">Lanice Lam Wen Xin</div>
+        <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
+        <p class="team-desc">UOW ID: 8576506<br />SIM ID: 10257775<br />Email: lwxlam001@mymail.sim.edu.sg</p>
+      </div>
+      <div class="team-card anim-fade-up anim-d5">
+        <div class="team-name">Lim Ying Xin</div>
+        <div class="team-role">Researcher · Backend Developer · Frontend Developer</div>
+        <p class="team-desc">UOW ID: 9097156<br />SIM ID: 10253809<br />Email: yxlim043@mymail.sim.edu.sg</p>
       </div>
     </div>
-  </div>
-</div>
 
-<footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
+    <div class="sup-section">
+      <div class="sec-label">Academic Staff</div>
+      <h2 class="sec-title" style="margin-bottom:1.25rem">Supervisor &amp; Accessor</h2>
+      <div class="sup-row">
+        <div class="sup-card anim-fade-up anim-d1">
+          <div class="sec-label" style="margin-bottom:0.5rem">Supervisor</div>
+          <div class="sup-name">Mr Ee Kiam Keong</div>
+          <!-- <div class="sup-role">Singapore Institute of Management</div> -->
+        </div>
+        <div class="sup-card anim-fade-up anim-d2">
+          <div class="sec-label" style="margin-bottom:0.5rem">Accessor</div>
+          <div class="sup-name">Mr Premrajan Ponnambath</div>
+          <!-- <div class="sup-role">Singapore Institute of Management</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
 </body>
+
 </html>
