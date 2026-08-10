@@ -10,122 +10,203 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    .feature-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      padding: 3.5rem 0;
-      border-bottom: 1px solid var(--border);
+    .role-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
     }
 
-    .feature-block:first-of-type {
-      border-top: 1px solid var(--border);
-    }
-
-    .feature-block:last-of-type {
-      border-bottom: none;
-    }
-
-    .feat-num {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--text3);
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    .feat-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.025em;
-      line-height: 1.25;
-      margin-bottom: 1rem;
-    }
-
-    .feat-desc {
-      font-size: 1rem;
+    .role-btn {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 9px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
       color: var(--text2);
-      line-height: 1.85;
-      margin-bottom: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .feat-visual {
+    .role-btn:hover {
+      border-color: var(--border2);
+      color: var(--text);
+    }
+
+    .role-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(62, 207, 142, 0.08);
+    }
+
+    .feat-group {
+      display: none;
+    }
+
+    .feat-group.visible {
+      display: block;
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .feat-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.75rem;
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--text2);
-      line-height: 1.9;
-      min-height: 180px;
-      transition: border-color 0.25s;
+      transition: border-color 0.25s, transform 0.3s, box-shadow 0.3s;
     }
 
-    .feat-visual:hover {
+    .feat-card:hover {
       border-color: var(--border2);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
     }
 
-    .feat-visual .hl {
+    .feat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(62, 207, 142, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .feat-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .feat-icon.blue {
+      background: rgba(96, 165, 250, 0.08);
+      border-color: rgba(96, 165, 250, 0.2);
+    }
+
+    .feat-icon.blue svg {
+      stroke: var(--blue);
+    }
+
+    .feat-icon.amber {
+      background: rgba(251, 191, 36, 0.08);
+      border-color: rgba(251, 191, 36, 0.2);
+    }
+
+    .feat-icon.amber svg {
+      stroke: var(--amber);
+    }
+
+    .feat-icon.red {
+      background: rgba(248, 113, 113, 0.08);
+      border-color: rgba(248, 113, 113, 0.2);
+    }
+
+    .feat-icon.red svg {
+      stroke: var(--red);
+    }
+
+    .feat-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .feat-desc {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.8;
+    }
+
+    .feat-badge {
+      display: inline-block;
+      margin-top: 0.875rem;
+      font-size: 11px;
+      font-family: var(--mono);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    .badge-free {
       color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(62, 207, 142, 0.2);
     }
 
-    .feat-visual .hl2 {
-      color: var(--blue);
-    }
-
-    .feat-visual .hl3 {
+    .badge-premium {
       color: var(--amber);
+      background: rgba(251, 191, 36, 0.07);
+      border: 1px solid rgba(251, 191, 36, 0.2);
     }
 
-    .feat-visual .hl4 {
-      color: var(--red);
+    .badge-admin {
+      color: var(--blue);
+      background: rgba(96, 165, 250, 0.07);
+      border: 1px solid rgba(96, 165, 250, 0.2);
     }
 
-    .feat-visual .cm {
-      color: var(--text3);
+    .badge-consultant {
+      color: #c084fc;
+      background: rgba(192, 132, 252, 0.07);
+      border: 1px solid rgba(192, 132, 252, 0.2);
     }
 
-    .mini-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
       margin-top: 1.5rem;
     }
 
-    .mini-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.1rem 1.25rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .mini-card:hover {
-      border-color: var(--border2);
-      transform: translateY(-3px);
-    }
-
-    .mini-card-num {
-      font-family: var(--mono);
-      font-size: 1.6rem;
+    .comparison-table th {
+      font-size: 12px;
       font-weight: 700;
-      line-height: 1;
-      margin-bottom: 5px;
+      letter-spacing: 0.07em;
+      color: var(--text3);
+      text-transform: uppercase;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border2);
+      text-align: left;
     }
 
-    .mini-card-lbl {
-      font-size: 13px;
+    .comparison-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
       color: var(--text2);
     }
 
+    .comparison-table td:first-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .check {
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .cross {
+      color: var(--text3);
+    }
+
     @media (max-width: 768px) {
-      .feature-block {
+      .feat-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
       }
     }
   </style>
@@ -134,8 +215,7 @@
 <body>
   <nav>
     <a class="nav-logo" href="index.html">
-      <img src="logo_cropped.png" alt="Rocket Trade" style="width:auto;object-fit:contain;" />
-      <!-- <span class="nav-logo-text">Rocket Trade</span> -->
+      <img src="logo_cropped.png" alt="Rocket Trade" style="height:44px;width:auto;object-fit:contain;" />
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -144,172 +224,391 @@
       <li><a href="team.html">Team</a></li>
       <li><a href="demo.html">Demo</a></li>
       <li><a href="meetings.html">Meetings</a></li>
-      <li><a href="https://drive.google.com/drive/folders/1l0rKAAQ5cz4-2IjWb_4qN4Atwqyja0Dz?usp=drive_link"
+      <li><a href="https://drive.google.com/drive/folders/1y5m9E-L5vZWqZJQW11HQRAY9qTn9efrv?usp=drive_link"
           target="_blank">Docs ↗</a></li>
     </ul>
   </nav>
-
   <div class="page">
     <div class="page-header reveal">
-      <div class="page-eyebrow">System Features</div>
-      <h1 class="page-title">What the system does</h1>
-      <p class="page-subtitle">Key capabilities across the data pipeline, machine learning models, and web application
-        interface.</p>
+      <div class="page-eyebrow">Platform Features</div>
+      <h1 class="page-title">Everything in one platform</h1>
+      <p class="page-subtitle">Sector-based AI predictions, real-time dashboards, portfolio trading, expert
+        applications, and platform-wide financial oversight — tailored by user role.</p>
     </div>
 
-    <!-- Feature 1 -->
-    <div class="feature-block">
-      <div class="reveal-left">
-        <div class="feat-num">01 / AI Prediction</div>
-        <h2 class="feat-title">Multi-source financial data collection</h2>
-        <p class="feat-desc">Automated scripts pull historical OHLCV price data and news headlines from five public
-          APIs, deduplicate and clean the records, then store them in a unified format ready for feature engineering.
-        </p>
-        <div class="tag-row">
-          <span class="tag">yfinance</span><span class="tag">Finnhub</span><span class="tag">Alpha Vantage</span><span
-            class="tag">NewsAPI</span><span class="tag">GDELT</span>
+    <!-- Role filter -->
+    <div class="role-tabs reveal">
+      <button class="role-btn active" onclick="showRole('all', this)">All Features</button>
+      <button class="role-btn" onclick="showRole('basic', this)">Basic / Premium Investor</button>
+      <button class="role-btn" onclick="showRole('premium', this)">Premium Only</button>
+      <button class="role-btn" onclick="showRole('expert', this)">Expert</button>
+      <button class="role-btn" onclick="showRole('financeadmin', this)">Finance Admin</button>
+      <button class="role-btn" onclick="showRole('admin', this)">Admin</button>
+    </div>
+
+    <!-- ALL / BASIC+PREMIUM features -->
+    <div class="feat-group visible" id="group-all">
+
+      <div class="sec-label reveal">Core Trading Features</div>
+      <div class="feat-grid" style="margin-top:1rem">
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Real-Time Stock Dashboard</div>
+          <div class="feat-desc">Live prices, candlestick charts, and trading volume across S&amp;P 500 stocks.
+            Search any tracked ticker and monitor price movements instantly.</div>
+          <span class="feat-badge badge-free">Basic + Premium</span>
+        </div>
+        <div class="feat-card reveal delay-2">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Sector-Based AI Prediction</div>
+          <div class="feat-desc">Eleven independent XGBoost models, one per S&amp;P 500 sector, predict next-day stock
+            movement from technical indicators. Each sector is calibrated and quality-gated separately, so weak
+            signals are flagged as WATCH instead of a false BUY/SELL call.</div>
+          <span class="feat-badge badge-free">Basic (limited) · </span><span class="feat-badge badge-premium">Premium
+            (unlimited)</span>
+        </div>
+        <div class="feat-card reveal delay-3">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <path d="M18 20V10M12 20V4M6 20v-6" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Quant Sector Ranking</div>
+          <div class="feat-desc">Ranks every stock inside a sector by model confidence, letting users compare
+            opportunities within the same industry at a glance instead of checking tickers one by one.</div>
+          <span class="feat-badge badge-free">Basic + Premium</span>
+        </div>
+        <div class="feat-card reveal delay-4">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <path d="M3 3h18v18H3z" />
+              <path d="M3 9h18M9 21V9" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Watchlist Management</div>
+          <div class="feat-desc">Add, view, monitor, and remove stocks from a personal watchlist. Real-time price
+            updates keep shortlisted stocks always in view.</div>
+          <span class="feat-badge badge-free">Basic + Premium</span>
+        </div>
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Portfolio Trading &amp; Wallet</div>
+          <div class="feat-desc">Buy and sell stocks against a platform wallet balance, with a small commission
+            charged per trade. Deposits and withdrawals run through a dedicated Cash Portal, with withdrawals
+            protected by a transaction PIN.</div>
+          <span class="feat-badge badge-free">Basic + Premium</span>
+        </div>
+        <div class="feat-card reveal delay-2">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Custom Stock Alerts</div>
+          <div class="feat-desc">Set price-threshold or percentage-move alerts per stock, with an optional custom
+            message. The system checks live prices continuously and emails a notification when a condition
+            triggers.</div>
+          <span class="feat-badge badge-free">Basic + Premium</span>
+        </div>
+        <div class="feat-card reveal delay-3">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Risk Assessment Profiling</div>
+          <div class="feat-desc">Identifies each user's risk tolerance to personalise stock recommendations and
+            investment guidance, so advice matches their financial comfort zone.</div>
+          <span class="feat-badge badge-free">Basic + Premium</span>
+        </div>
+        <div class="feat-card reveal delay-4">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+              <polyline points="16 7 22 7 22 13" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Stock Recommendations</div>
+          <div class="feat-desc">Buy, hold, or sell suggestions generated from sector prediction results and the
+            user's risk profile, filtered and personalised per user.</div>
+          <span class="feat-badge badge-free">Basic + Premium</span>
         </div>
       </div>
-      <div class="feat-visual reveal-right">
-        <span class="cm"># Data collected per stock</span><br />
-        tickers = [<span class="hl">'AAPL'</span>, <span class="hl">'MSFT'</span>, <span
-          class="hl">'GOOGL'</span>,<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'AMZN'</span>, <span
-          class="hl">'NVDA'</span>, <span class="hl">'META'</span>,<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'TSLA'</span>, <span
-          class="hl">'AVGO'</span>, <span class="hl">'ORCL'</span>,<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl">'AMD'</span>]<br /><br />
-        trading_days = <span class="hl2">12,540</span><br />
-        news_articles = <span class="hl2">8,444</span><br />
-        date_range = <span class="hl3">'2020–2024'</span>
-      </div>
-    </div>
 
-
-    <!-- Feature 2 -->
-    <div class="feature-block">
-      <div class="feat-visual reveal-left">
-        <span class="cm"># FinBERT output example</span><br />
-        {<br />
-        &nbsp;&nbsp;<span class="hl2">"headline"</span>: <span class="hl">"NVDA beats Q3 earnings..."</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"label"</span>: <span class="hl">"positive"</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"score"</span>: <span class="hl3">0.9412</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"ticker"</span>: <span class="hl">"NVDA"</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"date"</span>: <span class="hl">"2024-11-20"</span><br />
-        }
-      </div>
-      <div class="reveal-right">
-        <div class="feat-num">02 / Real-time Stock Data</div>
-        <h2 class="feat-title">FinBERT sentiment scoring</h2>
-        <p class="feat-desc">Every financial news headline is passed through a FinBERT transformer model to produce
-          Positive, Negative, or Neutral sentiment labels with confidence scores. Scores are aggregated daily per stock.
-        </p>
-        <div class="mini-cards">
-          <div class="mini-card">
-            <div class="mini-card-num" style="color:var(--accent)">2,565</div>
-            <div class="mini-card-lbl">Positive articles</div>
-          </div>
-          <div class="mini-card">
-            <div class="mini-card-num" style="color:var(--red)">3,662</div>
-            <div class="mini-card-lbl">Negative articles</div>
-          </div>
-          <div class="mini-card">
-            <div class="mini-card-num" style="color:var(--amber)">1,808</div>
-            <div class="mini-card-lbl">Neutral articles</div>
-          </div>
-          <div class="mini-card">
-            <div class="mini-card-num">8,444</div>
-            <div class="mini-card-lbl">Total scored</div>
-          </div>
+      <div class="sec-label reveal" style="margin-top:1rem">Premium Features</div>
+      <div class="feat-grid" style="margin-top:1rem">
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon amber"><svg viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg></div>
+          <div class="feat-title" data-role="premium">Direct Messaging with Experts</div>
+          <div class="feat-desc">Message verified experts directly for personalised investment guidance, instead of
+            submitting a one-off consultation form. Conversations stay in one thread per expert.</div>
+          <span class="feat-badge badge-premium">Premium Only</span>
+        </div>
+        <div class="feat-card reveal delay-2">
+          <div class="feat-icon amber"><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg></div>
+          <div class="feat-title" data-role="premium">Send Gifts to Experts</div>
+          <div class="feat-desc">Send a monetary gift to an expert from within a conversation as a way to tip for
+            helpful guidance, on top of any subscription fees already paid.</div>
+          <span class="feat-badge badge-premium">Premium Only</span>
+        </div>
+        <div class="feat-card reveal delay-3">
+          <div class="feat-icon amber"><svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <div class="feat-title" data-role="premium">Gated Stock Discussion</div>
+          <div class="feat-desc">A Premium-only forum category for deeper stock discussion, visible to Premium
+            investors, verified experts, and admins only.</div>
+          <span class="feat-badge badge-premium">Premium Only</span>
+        </div>
+        <div class="feat-card reveal delay-4">
+          <div class="feat-icon amber"><svg viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg></div>
+          <div class="feat-title" data-role="premium">Expert Portfolios (Full Access)</div>
+          <div class="feat-desc">View complete expert portfolios including stock selections, percentage allocations,
+            performance graphs, and purchase rationale — full details available to Premium subscribers only.</div>
+          <span class="feat-badge badge-premium">Premium Only</span>
         </div>
       </div>
-    </div>
 
-    <!-- Feature 3 -->
-    <div class="feature-block">
-      <div class="reveal-left">
-        <div class="feat-num">03 / Education Resources</div>
-        <h2 class="feat-title">XGBoost prediction model</h2>
-        <p class="feat-desc">A XGBoost model processes rolling windows of combined price and sentiment features.
-          Thevarchitecture captures both past and contextual temporal patterns, outputting a probability for the
-          next-day UP / DOWN direction.</p>
-        <div class="tag-row">
-          <span class="tag">PyTorch</span><span class="tag">XGBoost</span><span class="tag">Sliding window</span><span
-            class="tag">Chronological split</span>
+      <div class="sec-label reveal" style="margin-top:1rem">Learning &amp; Community</div>
+      <div class="feat-grid" style="margin-top:1rem">
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon blue"><svg viewBox="0 0 24 24">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Knowledge Hub</div>
+          <div class="feat-desc">Educational articles and investment guides covering stock market concepts, trading
+            strategies, and technical analysis. Basic users access limited content; Premium users unlock the full
+            library.</div>
+          <span class="feat-badge badge-free">Basic (limited) · </span><span class="feat-badge badge-premium">Premium
+            (full)</span>
+        </div>
+        <div class="feat-card reveal delay-2">
+          <div class="feat-icon blue"><svg viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">AI Chatbot</div>
+          <div class="feat-desc">An intelligent chatbot providing instant stock insights, market analysis, and
+            investment-related guidance. Basic users get a limited number of questions per day; Premium is
+            unlimited.</div>
+          <span class="feat-badge badge-free">Basic (limited) · </span><span class="feat-badge badge-premium">Premium
+            (unlimited)</span>
+        </div>
+        <div class="feat-card reveal delay-3">
+          <div class="feat-icon blue"><svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Community Forum</div>
+          <div class="feat-desc">Create, comment, and engage on trading discussions with other investors and
+            experts. Share market ideas, ask questions, and stay updated on community insights.</div>
+          <span class="feat-badge badge-free">All Users</span>
+        </div>
+        <div class="feat-card reveal delay-4">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Expert Portfolio Browsing</div>
+          <div class="feat-desc">All users can browse the expert portfolio list. Basic users see limited summary info;
+            Premium users unlock full strategy details, stock weightings, and performance metrics.</div>
+          <span class="feat-badge badge-free">Basic (preview) · </span><span class="feat-badge badge-premium">Premium
+            (full)</span>
+        </div>
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon"><svg viewBox="0 0 24 24">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+              <polyline points="16 7 22 7 22 13" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium">Platform Reviews</div>
+          <div class="feat-desc">Leave a star rating and written review of the platform itself. Reviews are public,
+            one per user, and editable — with an admin removal-notice flow for content that breaks the guidelines.</div>
+          <span class="feat-badge badge-free">All Users</span>
         </div>
       </div>
-      <div class="feat-visual reveal-right">
-        <span class="cm"># Input features per timestep</span><br />
-        features = [<br />
-        &nbsp;&nbsp;<span class="hl2">'open'</span>, <span class="hl2">'high'</span>, <span class="hl2">'low'</span>,
-        <span class="hl2">'close'</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">'volume'</span>, <span class="hl2">'rsi'</span>, <span
-          class="hl2">'macd'</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">'bb_upper'</span>, <span class="hl2">'bb_lower'</span>,<br />
-        &nbsp;&nbsp;<span class="hl">'sentiment_score'</span> <span class="cm"># FinBERT</span><br />
-        ]<br /><br />
-        output → <span class="hl">'UP'</span> | <span class="hl4">'DOWN'</span>
-      </div>
-    </div>
 
-    <!-- Feature 4 -->
-    <div class="feature-block">
-      <div class="feat-visual reveal-left">
-        <span class="cm"># API response</span><br />
-        {<br />
-        &nbsp;&nbsp;<span class="hl2">"ticker"</span>: <span class="hl">"AAPL"</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"prediction"</span>: <span class="hl">"UP"</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"confidence"</span>: <span class="hl3">0.73</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"sentiment"</span>: <span class="hl3">0.61</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">"sentiment_label"</span>: <span class="hl">"positive"</span><br />
-        }
-      </div>
-      <div class="reveal-right">
-        <div class="feat-num">04 / Professional consultant</div>
-        <h2 class="feat-title">Live prediction interface</h2>
-        <p class="feat-desc">A React frontend backed by a FastAPI Python server. Users select a stock, the system
-          auto-triggers XGBoost inference, and returns the directional prediction alongside the FinBERT sentiment gauge.
-        </p>
-        <div class="tag-row">
-          <span class="tag">React + Vite</span><span class="tag">Tailwind CSS</span><span
-            class="tag">FastAPI</span><span class="tag">OCI Cloud</span>
+      <div class="sec-label reveal" style="margin-top:1rem">Expert Features</div>
+      <div class="feat-grid" style="margin-top:1rem">
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon" style="background:rgba(192,132,252,0.08);border-color:rgba(192,132,252,0.2)"><svg
+              viewBox="0 0 24 24" style="stroke:#c084fc">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <div class="feat-title" data-role="basic premium expert">Become an Expert</div>
+          <div class="feat-desc">Investors can apply to become an Expert once they hit trading milestones — a minimum
+            number of distinct stocks traded and a minimum profit margin — then submit a LinkedIn profile and
+            supporting documents for review. There is no separate expert signup; the role is earned.</div>
+          <span class="feat-badge badge-consultant">Investor → Expert</span>
+        </div>
+        <div class="feat-card reveal delay-2">
+          <div class="feat-icon" style="background:rgba(192,132,252,0.08);border-color:rgba(192,132,252,0.2)"><svg
+              viewBox="0 0 24 24" style="stroke:#c084fc">
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg></div>
+          <div class="feat-title" data-role="expert">Create &amp; Manage Expert Portfolios</div>
+          <div class="feat-desc">Experts build curated stock portfolios with ticker allocations, percentage weights,
+            and purchase rationale. Portfolios are published for investors to browse and learn from.</div>
+          <span class="feat-badge badge-consultant">Expert</span>
+        </div>
+        <div class="feat-card reveal delay-3">
+          <div class="feat-icon" style="background:rgba(192,132,252,0.08);border-color:rgba(192,132,252,0.2)"><svg
+              viewBox="0 0 24 24" style="stroke:#c084fc">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg></div>
+          <div class="feat-title" data-role="expert">Message &amp; Advise Investors</div>
+          <div class="feat-desc">Reply to direct messages from Premium investors with professional investment
+            guidance, strategy recommendations, and answers to enquiries.</div>
+          <span class="feat-badge badge-consultant">Expert</span>
+        </div>
+        <div class="feat-card reveal delay-4">
+          <div class="feat-icon" style="background:rgba(192,132,252,0.08);border-color:rgba(192,132,252,0.2)"><svg
+              viewBox="0 0 24 24" style="stroke:#c084fc">
+              <path d="M18 20V10M12 20V4M6 20v-6" />
+            </svg></div>
+          <div class="feat-title" data-role="expert">Compensation Dashboard</div>
+          <div class="feat-desc">A summary view of total earnings and the breakdown behind them, covering gifts from
+            investors and the expert's share of related platform activity.</div>
+          <span class="feat-badge badge-consultant">Expert</span>
         </div>
       </div>
-    </div>
 
-    <!-- Feature 3 -->
-    <div class="feature-block">
-      <div class="reveal-left">
-        <div class="feat-num">05 / Interactive Forum</div>
-        <h2 class="feat-title">XGBoost prediction model</h2>
-        <p class="feat-desc">A XGBoost model processes rolling windows of combined price and sentiment features.
-          Thevarchitecture captures both past and contextual temporal patterns, outputting a probability for the
-          next-day UP / DOWN direction.</p>
-        <div class="tag-row">
-          <span class="tag">PyTorch</span><span class="tag">XGBoost</span><span class="tag">Sliding window</span><span
-            class="tag">Chronological split</span>
+      <div class="sec-label reveal" style="margin-top:1rem">Finance Admin Features</div>
+      <div class="feat-grid" style="margin-top:1rem">
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon blue"><svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg></div>
+          <div class="feat-title" data-role="financeadmin">Revenue &amp; Cash Flow Dashboard</div>
+          <div class="feat-desc">All-time revenue, revenue over a selected trailing window, net cash flow, and
+            large-withdrawal monitoring, all in one dashboard.</div>
+          <span class="feat-badge badge-admin">Finance Admin</span>
+        </div>
+        <div class="feat-card reveal delay-2">
+          <div class="feat-icon blue"><svg viewBox="0 0 24 24">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+          <div class="feat-title" data-role="financeadmin">Subscription &amp; Payment Management</div>
+          <div class="feat-desc">View every investor subscription by plan type, review payment transactions, and run
+            revenue analysis and financial reports across the platform.</div>
+          <span class="feat-badge badge-admin">Finance Admin</span>
+        </div>
+        <div class="feat-card reveal delay-3">
+          <div class="feat-icon blue"><svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+            </svg></div>
+          <div class="feat-title" data-role="financeadmin">Expert Document Verification</div>
+          <div class="feat-desc">Review the documents and LinkedIn profile submitted by investors applying to become
+            an Expert, then approve or reject the application. Approved verifications can no longer be cancelled.</div>
+          <span class="feat-badge badge-admin">Finance Admin</span>
         </div>
       </div>
-      <div class="feat-visual reveal-right">
-        <span class="cm"># Input features per timestep</span><br />
-        features = [<br />
-        &nbsp;&nbsp;<span class="hl2">'open'</span>, <span class="hl2">'high'</span>, <span class="hl2">'low'</span>,
-        <span class="hl2">'close'</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">'volume'</span>, <span class="hl2">'rsi'</span>, <span
-          class="hl2">'macd'</span>,<br />
-        &nbsp;&nbsp;<span class="hl2">'bb_upper'</span>, <span class="hl2">'bb_lower'</span>,<br />
-        &nbsp;&nbsp;<span class="hl">'sentiment_score'</span> <span class="cm"># FinBERT</span><br />
-        ]<br /><br />
-        output → <span class="hl">'UP'</span> | <span class="hl4">'DOWN'</span>
+
+      <div class="sec-label reveal" style="margin-top:1rem">Admin Features</div>
+      <div class="feat-grid" style="margin-top:1rem">
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon red"><svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <div class="feat-title" data-role="admin">User Account Management</div>
+          <div class="feat-desc">View, search, create, suspend, and delete user accounts. Manage user profiles and
+            access levels across Basic, Premium, Expert, Finance Admin, and Admin roles.</div>
+          <span class="feat-badge badge-admin">Admin</span>
+        </div>
+        <div class="feat-card reveal delay-2">
+          <div class="feat-icon red"><svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+            </svg></div>
+          <div class="feat-title" data-role="admin">Content Moderation</div>
+          <div class="feat-desc">Monitor, edit, and delete forum posts and comments, moderate platform reviews, and
+            manage investment guidance articles — add, edit, or remove educational content to maintain platform
+            accuracy.</div>
+          <span class="feat-badge badge-admin">Admin</span>
+        </div>
+        <div class="feat-card reveal delay-3">
+          <div class="feat-icon red"><svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+            </svg></div>
+          <div class="feat-title" data-role="admin">Expert Application Review</div>
+          <div class="feat-desc">Review investors who have applied to become experts alongside their trading track
+            record, before the application moves to Finance Admin for document verification.</div>
+          <span class="feat-badge badge-admin">Admin</span>
+        </div>
+        <div class="feat-card reveal delay-4">
+          <div class="feat-icon red"><svg viewBox="0 0 24 24">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+          <div class="feat-title" data-role="admin">Notification Management</div>
+          <div class="feat-desc">Send platform-wide or targeted notifications to users, and manage the notification
+            templates and history behind them.</div>
+          <span class="feat-badge badge-admin">Admin</span>
+        </div>
+        <div class="feat-card reveal delay-1">
+          <div class="feat-icon red"><svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg></div>
+          <div class="feat-title" data-role="admin">Admin Dashboard</div>
+          <div class="feat-desc">Centralized admin portal with sidebar navigation for user management, content
+            control, expert application review, and system monitoring — all accessible from a single interface.</div>
+          <span class="feat-badge badge-admin">Admin</span>
+        </div>
       </div>
-    </div>
+
+    </div><!-- end group-all -->
+
   </div>
-
   <footer><span>FYP-26-S2-27 · UOW · 2026</span></footer>
   <script>
+    function showRole(role, btn) {
+      document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.feat-card').forEach(card => {
+        if (role === 'all') {
+          card.style.display = '';
+        } else {
+          const titleEl = card.querySelector('[data-role]');
+          const roles = titleEl ? titleEl.dataset.role.split(' ') : [];
+          card.style.display = roles.includes(role) ? '' : 'none';
+        }
+      });
+
+      // Hide section labels with no visible cards
+      document.querySelectorAll('.feat-grid').forEach(grid => {
+        const visible = [...grid.querySelectorAll('.feat-card')].some(c => c.style.display !== 'none');
+        grid.style.display = visible ? '' : 'none';
+        // Hide the sec-label before this grid too
+        let prev = grid.previousElementSibling;
+        while (prev && !prev.classList.contains('sec-label')) prev = prev.previousElementSibling;
+        if (prev && prev.classList.contains('sec-label')) {
+          prev.style.display = visible ? '' : 'none';
+        }
+      });
+    }
+
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.08 });
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
   </script>
 </body>
