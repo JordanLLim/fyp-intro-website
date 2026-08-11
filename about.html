@@ -210,7 +210,7 @@
     <h2 class="sec-title reveal delay-1">Our vision</h2>
     <p class="sec-desc reveal delay-2">We are dedicated to transforming how individuals understand and interact with
       financial markets. Our vision is a platform where data-driven insights are at the core of every investment
-      decision — accessible to anyone with an internet connection, not just professionals.</p>
+      decision, accessible to anyone with an internet connection, not just professionals.</p>
 
     <div class="two-col">
       <div class="ps-card reveal delay-1">
@@ -228,7 +228,7 @@
     <div class="sec-label reveal" style="margin-top:3.5rem">Architecture</div>
     <h2 class="sec-title reveal delay-1">System architecture</h2>
     <p class="sec-desc reveal delay-2">Three-tier architecture connecting a React.js frontend, FastAPI backend, and
-      MySQL database — with an external stock API integration and ML prediction engine.</p>
+      MySQL database, with an external stock API integration and ML prediction engine.</p>
 
     <div class="reveal">
       <table class="arch-table">
@@ -241,17 +241,17 @@
         <tbody>
           <tr>
             <td>Presentation Layer</td>
-            <td>React.js frontend — users search stocks, view dashboards, manage watchlists, check predictions, and
+            <td>React.js frontend where users search stocks, view dashboards, manage watchlists, check predictions, and
               access account features via an interactive web interface.</td>
           </tr>
           <tr>
             <td>Application Layer</td>
-            <td>FastAPI backend — handles user authentication, role-based access, stock data processing, AI prediction
+            <td>FastAPI backend that handles user authentication, role-based access, stock data processing, AI prediction
               requests, portfolio functions, and all system logic.</td>
           </tr>
           <tr>
             <td>Data Layer</td>
-            <td>MySQL database — stores user accounts, roles, watchlists, portfolio records, transaction history,
+            <td>MySQL database that stores user accounts, roles, watchlists, portfolio records, transaction history,
               prediction results, alerts, forum posts, and expert content.</td>
           </tr>
         </tbody>
@@ -260,8 +260,8 @@
 
     <div class="sec-label reveal" style="margin-top:3.5rem">AI Pipeline</div>
     <h2 class="sec-title reveal delay-1">Machine learning pipeline</h2>
-    <p class="sec-desc reveal delay-2">XGBoost gradient boosting combined with FinBERT financial sentiment analysis —
-      trained on data from 2021 to 2026 across 10 large-cap NASDAQ tech stocks.</p>
+    <p class="sec-desc reveal delay-2">Eleven independent XGBoost classifiers, one per S&amp;P 500 GICS sector, trained
+      on technical, macroeconomic, and fundamental data to classify every stock as Buy, Hold, or Sell.</p>
 
     <div class="ticker-wrap reveal">
       <div class="ticker-track">
@@ -288,11 +288,12 @@
           <div class="p-circle">01</div>
         </div>
         <div class="p-body">
-          <div class="p-title">Real-time data collection</div>
-          <div class="p-desc">Stock price data and financial news retrieved from Alpha Vantage and other sources. OHLCV
-            data cleaned and preprocessed to remove noise for higher-quality analysis.</div>
-          <div class="tag-row"><span class="tag">Alpha Vantage</span><span class="tag">OHLCV data</span><span
-              class="tag">2021–2026</span></div>
+          <div class="p-title">Data retrieval &amp; feature engineering</div>
+          <div class="p-desc">Daily OHLCV price data, technical indicators (RSI, MACD, Bollinger Bands, ATR),
+            macroeconomic signals (10-year Treasury yield, S&amp;P 500 momentum/RSI), and company fundamentals (P/E,
+            P/B, ROE, ROA, revenue growth, dividend yield) are combined into 58 features per stock.</div>
+          <div class="tag-row"><span class="tag">34 technical</span><span class="tag">24 fundamental</span><span
+              class="tag">S&amp;P 500</span></div>
         </div>
       </div>
       <div class="p-step reveal delay-2">
@@ -300,11 +301,12 @@
           <div class="p-circle">02</div>
         </div>
         <div class="p-body">
-          <div class="p-title">FinBERT sentiment scoring</div>
-          <div class="p-desc">Financial news headlines scored using FinBERT — a BERT model fine-tuned on financial text.
-            Each article classified as Positive, Negative, or Neutral and aggregated daily per stock.</div>
-          <div class="tag-row"><span class="tag">FinBERT</span><span class="tag">Positive</span><span
-              class="tag red">Negative</span><span class="tag amber">Neutral</span></div>
+          <div class="p-title">Per-sector XGBoost training</div>
+          <div class="p-desc">Eleven independent XGBoost classifiers, one for each GICS sector, are trained to reflect
+            how the relationship between features and future returns differs between industries. Each model outputs a
+            Buy, Hold, or Sell classification.</div>
+          <div class="tag-row"><span class="tag">XGBoost</span><span class="tag">11 GICS sectors</span><span
+              class="tag">Buy</span><span class="tag red">Sell</span><span class="tag amber">Hold</span></div>
         </div>
       </div>
       <div class="p-step reveal delay-3">
@@ -312,11 +314,12 @@
           <div class="p-circle">03</div>
         </div>
         <div class="p-body">
-          <div class="p-title">Feature engineering</div>
-          <div class="p-desc">Technical indicators (RSI, MACD, Bollinger Bands) computed from price data and merged with
-            daily sentiment scores. Features normalised before model training.</div>
-          <div class="tag-row"><span class="tag blue">RSI</span><span class="tag blue">MACD</span><span
-              class="tag blue">Bollinger Bands</span><span class="tag blue">Sentiment score</span></div>
+          <div class="p-title">Probability calibration</div>
+          <div class="p-desc">Each sector model's output probabilities are passed through isotonic calibration on
+            held-out data, so a predicted confidence score more reliably reflects the true likelihood of that
+            outcome.</div>
+          <div class="tag-row"><span class="tag blue">Isotonic calibration</span><span class="tag blue">Held-out
+              validation</span></div>
         </div>
       </div>
       <div class="p-step reveal delay-4">
@@ -324,11 +327,11 @@
           <div class="p-circle">04</div>
         </div>
         <div class="p-body">
-          <div class="p-title">XGBoost model training</div>
-          <div class="p-desc">XGBoost gradient boosting model trained on combined price and sentiment features using
-            chronological splits to prevent data leakage. Generates stock movement predictions and risk assessments.
-          </div>
-          <div class="tag-row"><span class="tag">XGBoost</span><span class="tag">Chronological split</span><span
+          <div class="p-title">Confidence-gated prediction</div>
+          <div class="p-desc">Each sector's stored validation AUC and precision are checked against a reliability
+            threshold. Sectors that meet it (e.g. Utilities, Energy, Real Estate) show normal-confidence Buy/Hold/Sell
+            calls, while sectors below it are downgraded to a lower-confidence Watch label.</div>
+          <div class="tag-row"><span class="tag">AUC threshold</span><span class="tag">Watch flag</span><span
               class="tag">Python</span></div>
         </div>
       </div>
@@ -338,8 +341,8 @@
         </div>
         <div class="p-body">
           <div class="p-title">Platform delivery</div>
-          <div class="p-desc">Prediction results served via FastAPI to a React.js frontend — displayed alongside
-            real-time charts, sentiment gauges, buy/hold/sell recommendations, and risk profiling.</div>
+          <div class="p-desc">Buy/Hold/Sell recommendations are served via FastAPI to a React.js frontend, displayed
+            alongside real-time charts, sector confidence rankings, and risk profiling.</div>
           <div class="tag-row"><span class="tag">React.js</span><span class="tag">FastAPI</span><span
               class="tag">MySQL</span><span class="tag">Cloud hosting</span></div>
         </div>
